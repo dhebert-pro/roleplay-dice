@@ -3,7 +3,7 @@
     <div class="modal" @click.prevent="closeModal">
       <div style="height: 100%"></div>
     </div>
-    <dice-selection :color="color" @add-face="addFace" />
+    <dice-selection :color="color" :position="position" />
   </div>
   <div :style="cssVars" class="dice" @click.prevent="openModal">
     <component :is="iconName" :color="iconColor" width="50" height="50" />
@@ -29,6 +29,7 @@ import IconMask from '@/components/Icons/IconMask.vue';
   props: {
     color: Array,
     value: FaceType,
+    position: Number,
   },
   data() {
     return {
@@ -78,17 +79,13 @@ import IconMask from '@/components/Icons/IconMask.vue';
   },
   methods: {
     closeModal() {
+      // A appeler
       this.showSelectDice = false;
     },
     openModal() {
       this.showSelectDice = true;
     },
-    addFace(faceName: FaceType, position: number) {
-      this.$emit('add-face', faceName, position);
-      this.closeModal();
-    },
   },
-  emits: ['add-face'],
   components: {
     IconHeart,
     IconSword,

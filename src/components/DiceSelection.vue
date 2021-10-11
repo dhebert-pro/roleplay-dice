@@ -90,6 +90,7 @@ import DiceFace from '@/components/DiceFace.vue';
 @Options({
   props: {
     color: Array,
+    position: Number,
   },
   data() {
     return {
@@ -99,10 +100,13 @@ import DiceFace from '@/components/DiceFace.vue';
   computed: {},
   methods: {
     addFace(faceName: FaceType) {
-      this.$emit('add-face', faceName);
+      this.$store.dispatch('switchNewDiceFace', {
+        playerName: 'Nathan',
+        position: this.position,
+        faceName,
+      });
     },
   },
-  emits: ['add-face'],
   components: {
     DiceFace,
   },

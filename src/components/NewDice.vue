@@ -1,17 +1,13 @@
 <template>
   <div class="container" v-for="(face, index) in dice.faces" :key="index">
-    <new-dice-face
-      @add-face="addFace($event, index)"
-      :color="color"
-      :value="face"
-    />
+    <new-dice-face :position="index" :color="color" :value="face" />
   </div>
 </template>
 <script lang="ts">
 import { PropType } from 'vue';
 import { Options, Vue } from 'vue-class-component';
 import NewDiceFace from '@/components/NewDiceFace.vue';
-import { DiceModel, FaceType, getColorFromDice } from '@/models/DiceModel';
+import { DiceModel, getColorFromDice } from '@/models/DiceModel';
 
 @Options({
   props: {
@@ -22,12 +18,7 @@ import { DiceModel, FaceType, getColorFromDice } from '@/models/DiceModel';
       return getColorFromDice(this.dice);
     },
   },
-  methods: {
-    addFace(faceName: FaceType, position: number) {
-      this.$emit('switch-face', faceName, position);
-    },
-  },
-  emits: ['switch-face'],
+  methods: {},
   components: {
     NewDiceFace,
   },
