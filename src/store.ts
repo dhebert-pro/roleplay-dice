@@ -1,4 +1,4 @@
-import { Commit, createStore, Store } from 'vuex';
+import { createStore, Store } from 'vuex';
 import { FaceType } from '@/models/DiceModel';
 import { PlayerModel } from '@/models/PlayerModel';
 
