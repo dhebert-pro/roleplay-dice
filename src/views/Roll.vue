@@ -50,14 +50,16 @@ import { DiceModel } from '@/models/DiceModel';
   },
   methods: {
     addDice(dice: DiceModel) {
-      this.dices.push(dice);
+      this.$store.dispatch('addDice', {
+        playerName: 'Nathan',
+        dice,
+      });
       this.hasNewDice = false;
     },
     rollDicesOnce() {
-      this.$store.dispatch('swapFace', {
-        position: 0,
+      this.$store.dispatch('roll', {
         playerName: 'Nathan',
-        selectedFace: Math.floor(Math.random() * 6),
+        diceCount: this.dices.length,
       });
       this.rollIteration += 1;
     },

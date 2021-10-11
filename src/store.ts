@@ -55,15 +55,33 @@ const store: Store<ApplicationStoreModel> = createStore({
   },
   mutations: {
     swapFace(state, { position, playerName, selectedFace }) {
-      const player = state?.players?.find((player) => player.name === playerName);
+      const player = state.players.find((player) => player.name === playerName);
       if (player) {
         player.dices[position].selectedFace = selectedFace;
+      }
+    },
+    addDice(state, { playerName, dice }) {
+      const player = state.players.find((player) => player.name === playerName);
+      if (player) {
+        player.dices.push(dice);
       }
     },
   },
   actions: {
     swapFace({ commit }, payload) {
       commit('swapFace', payload);
+    },
+    addDice({ commit }, payload) {
+      commit('addDice', payload);
+    },
+    roll({ commit }, { playerName, diceCount }) {
+      for (let position = 0; position < diceCount; position += 1) {
+        commit('swapFace', {
+          position,
+          playerName,
+          selectedFace: Math.floor(Math.random() * 6),
+        });
+      }
     },
   },
 });
