@@ -98,6 +98,12 @@ const store: Store<ApplicationStoreModel> = createStore({
         player.newDice = undefined;
       }
     },
+    switchFace(state, { playerName, position, faceName }) {
+      const player: PlayerModel | undefined = getPlayerByName(state, playerName);
+      if (player && player.newDice) {
+        player.newDice.faces[position] = faceName;
+      }
+    },
   },
   actions: {
     swapFace({ commit }, payload) {
@@ -111,6 +117,9 @@ const store: Store<ApplicationStoreModel> = createStore({
     },
     clearNewDice({ commit }, payload) {
       commit('clearNewDice', payload);
+    },
+    switchFace({ commit }, payload) {
+      commit('switchFace', payload);
     },
     roll({ commit }, { playerName, diceCount }) {
       for (let position = 0; position < diceCount; position += 1) {

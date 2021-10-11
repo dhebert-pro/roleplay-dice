@@ -83,8 +83,8 @@ import IconMask from '@/components/Icons/IconMask.vue';
     openModal() {
       this.showSelectDice = true;
     },
-    addFace(diceName: FaceType, position: number) {
-      this.$emit('add-face', diceName, position);
+    addFace(faceName: FaceType, position: number) {
+      this.$emit('add-face', faceName, position);
       this.closeModal();
     },
   },

@@ -98,8 +98,8 @@ import DiceFace from '@/components/DiceFace.vue';
   },
   computed: {},
   methods: {
-    addFace(diceName: string) {
-      this.$emit('add-face', diceName);
+    addFace(faceName: FaceType) {
+      this.$emit('add-face', faceName);
     },
   },
   emits: ['add-face'],

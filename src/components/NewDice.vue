@@ -23,8 +23,8 @@ import { DiceModel, FaceType, getColorFromDice } from '@/models/DiceModel';
     },
   },
   methods: {
-    addFace(diceName: FaceType, position: number) {
-      this.$emit('switch-face', diceName, position);
+    addFace(faceName: FaceType, position: number) {
+      this.$emit('switch-face', faceName, position);
     },
   },
   emits: ['switch-face'],

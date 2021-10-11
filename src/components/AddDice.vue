@@ -35,8 +35,13 @@ import { FaceType } from '@/models/DiceModel';
         playerName: 'Nathan',
       });
     },
-    switchFace(diceName: FaceType, position: number) {
-      this.newDice.faces[position] = diceName;
+    switchFace(faceName: FaceType, position: number) {
+      this.$store.dispatch('switchFace', {
+        playerName: 'Nathan',
+        position,
+        faceName,
+      });
+      // this.newDice.faces[position] = diceName;
     },
   },
   emits: ['add-dice'],
