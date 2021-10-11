@@ -13,16 +13,7 @@ const getPlayerByName = (
   (player) => player.name === playerName,
 );
 
-const roll = (commit: Commit, player: PlayerModel) => {
-  const diceCount = player.dices.length;
-  for (let position = 0; position < diceCount; position += 1) {
-    commit('swapFace', {
-      position,
-      playerName: player.name,
-      selectedFace: Math.floor(Math.random() * 6),
-    });
-  }
-};
+const sleep = (delay: number) => new Promise((resolve) => setTimeout(resolve, delay));
 
 // Create a new store instance.
 const store: Store<ApplicationStoreModel> = createStore({
@@ -74,6 +65,9 @@ const store: Store<ApplicationStoreModel> = createStore({
     newDiceFromPlayer: (_, getters) => (
       playerName: string,
     ) => getters.playerByName(playerName)?.newDice,
+    isRollingFromPlayer: (_, getters) => (
+      playerName: string,
+    ) => getters.playerByName(playerName)?.isRolling,
   },
   mutations: {
     swapFace(state, { position, playerName, selectedFace }) {
@@ -123,6 +117,12 @@ const store: Store<ApplicationStoreModel> = createStore({
         player.newDice.label = diceName;
       }
     },
+    setRolling(state, { playerName, isRolling }) {
+      const player: PlayerModel | undefined = getPlayerByName(state, playerName);
+      if (player) {
+        player.isRolling = isRolling;
+      }
+    },
   },
   actions: {
     swapFace({ commit }, payload) {
@@ -143,10 +143,23 @@ const store: Store<ApplicationStoreModel> = createStore({
     changeNewDiceName({ commit }, payload) {
       commit('changeNewDiceName', payload);
     },
-    roll({ commit, getters }, { playerName }) {
+    async roll({ commit, getters }, { playerName, nbIterations, delay }) {
       const player: PlayerModel | undefined = getters.playerByName(playerName);
       if (player) {
-        roll(commit, player);
+        const diceCount = player.dices.length;
+        commit('setRolling', { playerName, isRolling: true });
+        for (let i = 0; i < nbIterations; i += 1) {
+          // eslint-disable-next-line no-await-in-loop
+          await sleep(delay);
+          for (let position = 0; position < diceCount; position += 1) {
+            commit('swapFace', {
+              position,
+              playerName: player.name,
+              selectedFace: Math.floor(Math.random() * 6),
+            });
+          }
+        }
+        commit('setRolling', { playerName, isRolling: false });
       }
     },
   },

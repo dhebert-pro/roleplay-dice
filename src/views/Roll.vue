@@ -19,11 +19,7 @@ import { DiceModel } from '@/models/DiceModel';
 
 @Options({
   data() {
-    return {
-      rollIteration: 0,
-      isRolling: false,
-      totalIteration: Math.floor(Math.random() * 20) + 1,
-    };
+    return {};
   },
   computed: {
     dices() {
@@ -32,24 +28,11 @@ import { DiceModel } from '@/models/DiceModel';
     newDice() {
       return this.$store.getters.newDiceFromPlayer('Nathan');
     },
-  },
-  watch: {
-    isRolling(newIsRolling) {
-      if (newIsRolling) {
-        setTimeout(this.rollDicesOnce, 100);
-      } else {
-        this.rollIteration = 0;
-        this.totalIteration = Math.floor(Math.random() * 20) + 1;
-      }
-    },
-    rollIteration(newRollIteration) {
-      if (newRollIteration < this.totalIteration && this.isRolling) {
-        setTimeout(this.rollDicesOnce, 100);
-      } else {
-        this.isRolling = false;
-      }
+    isRolling() {
+      return this.$store.getters.isRollingFromPlayer('Nathan');
     },
   },
+  watch: {},
   methods: {
     addDice(dice: DiceModel) {
       this.$store.dispatch('addDice', {
@@ -57,14 +40,12 @@ import { DiceModel } from '@/models/DiceModel';
         dice,
       });
     },
-    rollDicesOnce() {
+    rollDices() {
       this.$store.dispatch('roll', {
         playerName: 'Nathan',
+        nbIterations: 20,
+        delay: 100,
       });
-      this.rollIteration += 1;
-    },
-    rollDices() {
-      this.isRolling = true;
     },
     showAddDice() {
       this.$store.dispatch('addNewDice', {
