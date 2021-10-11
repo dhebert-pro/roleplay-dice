@@ -13,7 +13,7 @@ export enum FaceType {
   BLANK,
 }
 
-export type DiceModel = {
+export interface DiceModel {
   id: string,
   label: string,
   faces: Array<FaceType>,

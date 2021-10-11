@@ -11,7 +11,7 @@
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import { FaceType } from '@/models/Dice';
+import { FaceType } from '@/models/DiceModel';
 import DiceSelection from '@/components/DiceSelection.vue';
 import IconHeart from '@/components/Icons/IconHeart.vue';
 import IconSword from '@/components/Icons/IconSword.vue';

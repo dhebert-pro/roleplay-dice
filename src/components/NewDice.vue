@@ -11,7 +11,7 @@
 import { PropType } from 'vue';
 import { Options, Vue } from 'vue-class-component';
 import NewDiceFace from '@/components/NewDiceFace.vue';
-import { DiceModel, FaceType, getColorFromDice } from '@/models/Dice';
+import { DiceModel, FaceType, getColorFromDice } from '@/models/DiceModel';
 
 @Options({
   props: {

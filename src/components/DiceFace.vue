@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import { FaceType } from '@/models/Dice';
+import { FaceType } from '@/models/DiceModel';
 import IconHeart from '@/components/Icons/IconHeart.vue';
 import IconSword from '@/components/Icons/IconSword.vue';
 import IconShield from '@/components/Icons/IconShield.vue';

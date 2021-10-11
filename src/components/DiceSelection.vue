@@ -84,7 +84,7 @@
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import { FaceType } from '@/models/Dice';
+import { FaceType } from '@/models/DiceModel';
 import DiceFace from '@/components/DiceFace.vue';
 
 @Options({

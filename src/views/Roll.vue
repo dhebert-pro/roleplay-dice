@@ -15,7 +15,7 @@ import { Options, Vue } from 'vue-class-component';
 import Dices from '@/components/Dices.vue';
 import PlayerDices from '@/components/PlayerDices.vue';
 import AddDice from '@/components/AddDice.vue';
-import { FaceType, DiceModel } from '@/models/Dice';
+import { FaceType, DiceModel } from '@/models/DiceModel';
 
 const initialDices: Array<DiceModel> = [
   {

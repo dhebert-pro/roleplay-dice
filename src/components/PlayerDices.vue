@@ -13,7 +13,7 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 import DiceFace from '@/components/DiceFace.vue';
-import { DiceModel, getColorFromDice } from '@/models/Dice';
+import { DiceModel, getColorFromDice } from '@/models/DiceModel';
 
 @Options({
   props: {

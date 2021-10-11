@@ -11,7 +11,7 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 import NewDice from '@/components/NewDice.vue';
-import { FaceType } from '@/models/Dice';
+import { FaceType } from '@/models/DiceModel';
 
 @Options({
   props: {
