@@ -27,7 +27,7 @@ import { DiceModel } from '@/models/DiceModel';
   },
   computed: {
     dices() {
-      return this.$store.getters.diceFromPlayer('Nathan');
+      return this.$store.getters.dicesFromPlayer('Nathan');
     },
     newDice() {
       return this.$store.getters.newDiceFromPlayer('Nathan');

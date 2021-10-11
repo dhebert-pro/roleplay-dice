@@ -57,7 +57,9 @@ const store: Store<ApplicationStoreModel> = createStore({
   },
   getters: {
     playerByName: (state) => (playerName: string) => getPlayerByName(state, playerName),
-    diceFromPlayer: (_, getters) => (playerName: string) => getters.playerByName(playerName)?.dices,
+    dicesFromPlayer: (_, getters) => (
+      playerName: string,
+    ) => getters.playerByName(playerName)?.dices,
     newDiceFromPlayer: (_, getters) => (
       playerName: string,
     ) => getters.playerByName(playerName)?.newDice,
