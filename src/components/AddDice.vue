@@ -11,7 +11,6 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 import NewDice from '@/components/NewDice.vue';
-import { FaceType } from '@/models/DiceModel';
 
 @Options({
   props: {
@@ -37,7 +36,10 @@ import { FaceType } from '@/models/DiceModel';
   },
   methods: {
     addDice() {
-      this.$emit('add-dice', this.newDice);
+      this.$store.dispatch('addDice', {
+        playerName: 'Nathan',
+        dice: this.newDice,
+      });
       this.clearDice();
     },
     clearDice() {
@@ -46,7 +48,6 @@ import { FaceType } from '@/models/DiceModel';
       });
     },
   },
-  emits: ['add-dice'],
   components: {
     NewDice,
   },

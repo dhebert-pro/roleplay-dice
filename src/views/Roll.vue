@@ -7,7 +7,7 @@
     </div>
     <p class="warning" v-show="!dices.length">Aucun dé n'a été trouvé</p>
     <input type="button" value="Ajouter un dé" @click="showAddDice" />
-    <add-dice :diceCount="dices.length" @add-dice="addDice" v-if="newDice" />
+    <add-dice :diceCount="dices.length" v-if="newDice" />
   </div>
 </template>
 <script lang="ts">
@@ -15,7 +15,6 @@ import { Options, Vue } from 'vue-class-component';
 import Dices from '@/components/Dices.vue';
 import PlayerDices from '@/components/PlayerDices.vue';
 import AddDice from '@/components/AddDice.vue';
-import { DiceModel } from '@/models/DiceModel';
 
 @Options({
   data() {
@@ -34,12 +33,6 @@ import { DiceModel } from '@/models/DiceModel';
   },
   watch: {},
   methods: {
-    addDice(dice: DiceModel) {
-      this.$store.dispatch('addDice', {
-        playerName: 'Nathan',
-        dice,
-      });
-    },
     showAddDice() {
       this.$store.dispatch('addNewDice', {
         playerName: 'Nathan',
