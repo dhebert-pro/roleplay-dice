@@ -1,4 +1,4 @@
-import { createStore, Store } from 'vuex';
+import { Commit, createStore, Store } from 'vuex';
 import { FaceType } from '@/models/DiceModel';
 import { PlayerModel } from '@/models/PlayerModel';
 
@@ -12,6 +12,17 @@ const getPlayerByName = (
 ): PlayerModel | undefined => state.players.find(
   (player) => player.name === playerName,
 );
+
+const roll = (commit: Commit, player: PlayerModel) => {
+  const diceCount = player.dices.length;
+  for (let position = 0; position < diceCount; position += 1) {
+    commit('swapFace', {
+      position,
+      playerName: player.name,
+      selectedFace: Math.floor(Math.random() * 6),
+    });
+  }
+};
 
 // Create a new store instance.
 const store: Store<ApplicationStoreModel> = createStore({
@@ -135,14 +146,7 @@ const store: Store<ApplicationStoreModel> = createStore({
     roll({ commit, getters }, { playerName }) {
       const player: PlayerModel | undefined = getters.playerByName(playerName);
       if (player) {
-        const diceCount = player.dices.length;
-        for (let position = 0; position < diceCount; position += 1) {
-          commit('swapFace', {
-            position,
-            playerName,
-            selectedFace: Math.floor(Math.random() * 6),
-          });
-        }
+        roll(commit, player);
       }
     },
   },
