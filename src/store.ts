@@ -132,13 +132,17 @@ const store: Store<ApplicationStoreModel> = createStore({
     changeNewDiceName({ commit }, payload) {
       commit('changeNewDiceName', payload);
     },
-    roll({ commit }, { playerName, diceCount }) {
-      for (let position = 0; position < diceCount; position += 1) {
-        commit('swapFace', {
-          position,
-          playerName,
-          selectedFace: Math.floor(Math.random() * 6),
-        });
+    roll({ commit, getters }, { playerName }) {
+      const player: PlayerModel | undefined = getters.playerByName(playerName);
+      if (player) {
+        const diceCount = player.dices.length;
+        for (let position = 0; position < diceCount; position += 1) {
+          commit('swapFace', {
+            position,
+            playerName,
+            selectedFace: Math.floor(Math.random() * 6),
+          });
+        }
       }
     },
   },

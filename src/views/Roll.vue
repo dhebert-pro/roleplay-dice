@@ -60,7 +60,6 @@ import { DiceModel } from '@/models/DiceModel';
     rollDicesOnce() {
       this.$store.dispatch('roll', {
         playerName: 'Nathan',
-        diceCount: this.dices.length,
       });
       this.rollIteration += 1;
     },
