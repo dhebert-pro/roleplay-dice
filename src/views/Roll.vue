@@ -7,7 +7,7 @@
     </div>
     <p class="warning" v-show="!dices.length">Aucun dé n'a été trouvé</p>
     <input type="button" value="Ajouter un dé" @click="showAddDice" />
-    <add-dice :diceCount="dices.length" @add-dice="addDice" v-if="hasNewDice" />
+    <add-dice :diceCount="dices.length" @add-dice="addDice" v-if="newDice" />
   </div>
 </template>
 <script lang="ts">
@@ -23,12 +23,14 @@ import { DiceModel } from '@/models/DiceModel';
       rollIteration: 0,
       isRolling: false,
       totalIteration: Math.floor(Math.random() * 20) + 1,
-      hasNewDice: false,
     };
   },
   computed: {
     dices() {
       return this.$store.getters.diceFromPlayer('Nathan');
+    },
+    newDice() {
+      return this.$store.getters.newDiceFromPlayer('Nathan');
     },
   },
   watch: {
@@ -54,7 +56,6 @@ import { DiceModel } from '@/models/DiceModel';
         playerName: 'Nathan',
         dice,
       });
-      this.hasNewDice = false;
     },
     rollDicesOnce() {
       this.$store.dispatch('roll', {
@@ -67,7 +68,10 @@ import { DiceModel } from '@/models/DiceModel';
       this.isRolling = true;
     },
     showAddDice() {
-      this.hasNewDice = true;
+      this.$store.dispatch('addNewDice', {
+        playerName: 'Nathan',
+        diceCount: this.dices.length,
+      });
     },
   },
   components: {

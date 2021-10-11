@@ -3,7 +3,7 @@
   <div class="line">
     <input class="diceName" v-model="diceName" />
     <div class="faces">
-      <new-dice @switch-face="switchFace" :dice="dice" />
+      <new-dice @switch-face="switchFace" :dice="newDice" />
       <input type="button" value="Ajouter le dé" @click="addDice" />
     </div>
   </div>
@@ -19,28 +19,24 @@ import { FaceType } from '@/models/DiceModel';
   },
   data() {
     return {
-      dice: {
-        id: this.diceCount,
-        label: '',
-        faces: [
-          FaceType.BLANK,
-          FaceType.BLANK,
-          FaceType.BLANK,
-          FaceType.BLANK,
-          FaceType.BLANK,
-          FaceType.BLANK,
-        ],
-      },
       diceName: '',
     };
   },
+  computed: {
+    newDice() {
+      return this.$store.getters.newDiceFromPlayer('Nathan');
+    },
+  },
   methods: {
     addDice() {
-      this.dice.label = this.diceName;
-      this.$emit('add-dice', this.dice);
+      this.newDice.label = this.diceName;
+      this.$emit('add-dice', this.newDice);
+      this.$store.dispatch('clearNewDice', {
+        playerName: 'Nathan',
+      });
     },
     switchFace(diceName: FaceType, position: number) {
-      this.dice.faces[position] = diceName;
+      this.newDice.faces[position] = diceName;
     },
   },
   emits: ['add-dice'],

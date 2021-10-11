@@ -6,7 +6,10 @@ export interface ApplicationStoreModel {
   players: Array<PlayerModel>;
 }
 
-const getDiceFromPlayer = (state: ApplicationStoreModel, playerName: string) => state.players.find(
+const getPlayerByName = (
+  state: ApplicationStoreModel,
+  playerName: string,
+): PlayerModel | undefined => state.players.find(
   (player) => player.name === playerName,
 );
 
@@ -53,20 +56,46 @@ const store: Store<ApplicationStoreModel> = createStore({
     };
   },
   getters: {
-    playerByName: (state) => (playerName: string) => getDiceFromPlayer(state, playerName),
+    playerByName: (state) => (playerName: string) => getPlayerByName(state, playerName),
     diceFromPlayer: (_, getters) => (playerName: string) => getters.playerByName(playerName)?.dices,
+    newDiceFromPlayer: (_, getters) => (
+      playerName: string,
+    ) => getters.playerByName(playerName)?.newDice,
   },
   mutations: {
     swapFace(state, { position, playerName, selectedFace }) {
-      const player = getDiceFromPlayer(state, playerName);
+      const player: PlayerModel | undefined = getPlayerByName(state, playerName);
       if (player) {
         player.dices[position].selectedFace = selectedFace;
       }
     },
     addDice(state, { playerName, dice }) {
-      const player = getDiceFromPlayer(state, playerName);
+      const player: PlayerModel | undefined = getPlayerByName(state, playerName);
       if (player) {
         player.dices.push(dice);
+      }
+    },
+    addNewDice(state, { playerName, diceCount }) {
+      const player: PlayerModel | undefined = getPlayerByName(state, playerName);
+      if (player) {
+        player.newDice = {
+          id: diceCount,
+          label: '',
+          faces: [
+            FaceType.BLANK,
+            FaceType.BLANK,
+            FaceType.BLANK,
+            FaceType.BLANK,
+            FaceType.BLANK,
+            FaceType.BLANK,
+          ],
+        };
+      }
+    },
+    clearNewDice(state, { playerName }) {
+      const player: PlayerModel | undefined = getPlayerByName(state, playerName);
+      if (player) {
+        player.newDice = undefined;
       }
     },
   },
@@ -76,6 +105,12 @@ const store: Store<ApplicationStoreModel> = createStore({
     },
     addDice({ commit }, payload) {
       commit('addDice', payload);
+    },
+    addNewDice({ commit }, payload) {
+      commit('addNewDice', payload);
+    },
+    clearNewDice({ commit }, payload) {
+      commit('clearNewDice', payload);
     },
     roll({ commit }, { playerName, diceCount }) {
       for (let position = 0; position < diceCount; position += 1) {
