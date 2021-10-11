@@ -2,7 +2,7 @@
   <div>
     <h1>Lancer les dés</h1>
     <div v-show="dices.length">
-      <player-dices :dices="dices" @roll="rollDices" :isRolling="isRolling" />
+      <player-dices :dices="dices" :isRolling="isRolling" />
       <dices :dices="dices" />
     </div>
     <p class="warning" v-show="!dices.length">Aucun dé n'a été trouvé</p>
@@ -38,13 +38,6 @@ import { DiceModel } from '@/models/DiceModel';
       this.$store.dispatch('addDice', {
         playerName: 'Nathan',
         dice,
-      });
-    },
-    rollDices() {
-      this.$store.dispatch('roll', {
-        playerName: 'Nathan',
-        nbIterations: 20,
-        delay: 100,
       });
     },
     showAddDice() {

@@ -27,13 +27,16 @@ import { DiceModel, getColorFromDice } from '@/models/DiceModel';
       };
     },
   },
-  emits: ['roll'],
   methods: {
     getColorFromDice(dice: DiceModel) {
       return getColorFromDice(dice);
     },
     rollDices() {
-      this.$emit('roll');
+      this.$store.dispatch('roll', {
+        playerName: 'Nathan',
+        nbIterations: 20,
+        delay: 100,
+      });
     },
   },
   components: {
