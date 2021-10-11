@@ -100,10 +100,16 @@ const store: Store<ApplicationStoreModel> = createStore({
         player.newDice = undefined;
       }
     },
-    switchFace(state, { playerName, position, faceName }) {
+    switchNewDiceFace(state, { playerName, position, faceName }) {
       const player: PlayerModel | undefined = getPlayerByName(state, playerName);
       if (player && player.newDice) {
         player.newDice.faces[position] = faceName;
+      }
+    },
+    changeNewDiceName(state, { playerName, diceName }) {
+      const player: PlayerModel | undefined = getPlayerByName(state, playerName);
+      if (player && player.newDice) {
+        player.newDice.label = diceName;
       }
     },
   },
@@ -120,8 +126,11 @@ const store: Store<ApplicationStoreModel> = createStore({
     clearNewDice({ commit }, payload) {
       commit('clearNewDice', payload);
     },
-    switchFace({ commit }, payload) {
-      commit('switchFace', payload);
+    switchNewDiceFace({ commit }, payload) {
+      commit('switchNewDiceFace', payload);
+    },
+    changeNewDiceName({ commit }, payload) {
+      commit('changeNewDiceName', payload);
     },
     roll({ commit }, { playerName, diceCount }) {
       for (let position = 0; position < diceCount; position += 1) {

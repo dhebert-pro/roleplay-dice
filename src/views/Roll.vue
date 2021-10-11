@@ -34,16 +34,16 @@ import { DiceModel } from '@/models/DiceModel';
     },
   },
   watch: {
-    isRolling(newVal) {
-      if (newVal) {
+    isRolling(newIsRolling) {
+      if (newIsRolling) {
         setTimeout(this.rollDicesOnce, 100);
       } else {
         this.rollIteration = 0;
         this.totalIteration = Math.floor(Math.random() * 20) + 1;
       }
     },
-    rollIteration(newVal) {
-      if (newVal < this.totalIteration && this.isRolling) {
+    rollIteration(newRollIteration) {
+      if (newRollIteration < this.totalIteration && this.isRolling) {
         setTimeout(this.rollDicesOnce, 100);
       } else {
         this.isRolling = false;

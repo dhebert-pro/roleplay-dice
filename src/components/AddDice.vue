@@ -27,21 +27,30 @@ import { FaceType } from '@/models/DiceModel';
       return this.$store.getters.newDiceFromPlayer('Nathan');
     },
   },
+  watch: {
+    diceName(newDiceName) {
+      this.$store.dispatch('changeNewDiceName', {
+        playerName: 'Nathan',
+        diceName: newDiceName,
+      });
+    },
+  },
   methods: {
     addDice() {
-      this.newDice.label = this.diceName;
       this.$emit('add-dice', this.newDice);
+      this.clearDice();
+    },
+    clearDice() {
       this.$store.dispatch('clearNewDice', {
         playerName: 'Nathan',
       });
     },
     switchFace(faceName: FaceType, position: number) {
-      this.$store.dispatch('switchFace', {
+      this.$store.dispatch('switchNewDiceFace', {
         playerName: 'Nathan',
         position,
         faceName,
       });
-      // this.newDice.faces[position] = diceName;
     },
   },
   emits: ['add-dice'],
