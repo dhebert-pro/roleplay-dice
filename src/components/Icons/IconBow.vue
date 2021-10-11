@@ -1,0 +1,60 @@
+<template>
+  <svg
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns="http://www.w3.org/2000/svg"
+    :width="width"
+    :height="height"
+    viewBox="0 0 60 60"
+    version="1.1"
+    id="svg8"
+  >
+    <g :fill="color">
+      <g id="layer1" transform="translate(-72.531587,-116.34122)">
+        <path
+          id="path4986"
+          d="m 83.924863,150.84441 24.256467,25.49681 c 6.80175,-8.31396
+        10.96655,-16.81453 12.05844,-25.49681 h -2.89798 c -0.84821,6.74459
+        -4.08332,13.348 -9.36705,19.80646 L 89.131709,150.84441 Z"
+        />
+        <path
+          id="path4954"
+          d="m 108.18133,116.34122 -24.214487,25.4523 h 4.723848 l
+        18.711439,-19.66741 c 5.52487,6.67818 8.54961,13.23456 9.36279,19.66741
+        h 3.48712 c -1.02154,-8.32399 -4.92012,-16.80907 -12.07071,-25.4523 z"
+        />
+        <rect
+          id="rect4990"
+          width="44.404678"
+          height="3.1226811"
+          x="80.775513"
+          y="144.48978"
+        />
+        <path
+          id="path4994"
+          d="m 133.99256,149.4896 0.64837,-18.5172 15.71218,9.82011 z"
+          transform="matrix(0.46552886,-0.02822867,0.01749892,0.75097586,60.074159,44.150773)"
+        />
+        <path
+          id="path4998"
+          d="m 72.531587,141.9752 2.308736,4.01435 -2.308736,4.01436 h 7.881396 l
+        2.308735,-4.01436 -2.308735,-4.01435 z"
+        />
+      </g>
+    </g>
+  </svg>
+</template>
+<script lang="ts">
+import { Options, Vue } from 'vue-class-component';
+
+@Options({
+  props: {
+    color: String,
+    width: String,
+    height: String,
+  },
+})
+export default class IconBow extends Vue {}
+</script>
