@@ -6,6 +6,10 @@ export interface ApplicationStoreModel {
   players: Array<PlayerModel>;
 }
 
+const getDiceFromPlayer = (state: ApplicationStoreModel, playerName: string) => state.players.find(
+  (player) => player.name === playerName,
+);
+
 // Create a new store instance.
 const store: Store<ApplicationStoreModel> = createStore({
   state() {
@@ -49,19 +53,18 @@ const store: Store<ApplicationStoreModel> = createStore({
     };
   },
   getters: {
-    diceFromPlayer: (state) => (playerName: string) => state.players.find(
-      (player) => player.name === playerName,
-    )?.dices,
+    playerByName: (state) => (playerName: string) => getDiceFromPlayer(state, playerName),
+    diceFromPlayer: (_, getters) => (playerName: string) => getters.playerByName(playerName)?.dices,
   },
   mutations: {
     swapFace(state, { position, playerName, selectedFace }) {
-      const player = state.players.find((player) => player.name === playerName);
+      const player = getDiceFromPlayer(state, playerName);
       if (player) {
         player.dices[position].selectedFace = selectedFace;
       }
     },
     addDice(state, { playerName, dice }) {
-      const player = state.players.find((player) => player.name === playerName);
+      const player = getDiceFromPlayer(state, playerName);
       if (player) {
         player.dices.push(dice);
       }
