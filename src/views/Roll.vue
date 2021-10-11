@@ -15,32 +15,21 @@ import { Options, Vue } from 'vue-class-component';
 import Dices from '@/components/Dices.vue';
 import PlayerDices from '@/components/PlayerDices.vue';
 import AddDice from '@/components/AddDice.vue';
-import { FaceType, DiceModel } from '@/models/DiceModel';
-
-const initialDices: Array<DiceModel> = [
-  {
-    id: '0',
-    label: 'Départ',
-    faces: [
-      FaceType.ATTACK,
-      FaceType.DEFENSE,
-      FaceType.MOVE,
-      FaceType.BLANK,
-      FaceType.BLANK,
-      FaceType.BLANK,
-    ],
-  },
-];
+import { DiceModel } from '@/models/DiceModel';
 
 @Options({
   data() {
     return {
-      dices: initialDices,
       rollIteration: 0,
       isRolling: false,
       totalIteration: Math.floor(Math.random() * 20) + 1,
       hasNewDice: false,
     };
+  },
+  computed: {
+    dices() {
+      return this.$store.getters.diceFromPlayer('Nathan');
+    },
   },
   watch: {
     isRolling(newVal) {
@@ -65,10 +54,11 @@ const initialDices: Array<DiceModel> = [
       this.hasNewDice = false;
     },
     rollDicesOnce() {
-      this.dices = this.dices.map((dice: DiceModel) => ({
-        ...dice,
+      this.$store.dispatch('swapFace', {
+        position: 0,
+        playerName: 'Nathan',
         selectedFace: Math.floor(Math.random() * 6),
-      }));
+      });
       this.rollIteration += 1;
     },
     rollDices() {
