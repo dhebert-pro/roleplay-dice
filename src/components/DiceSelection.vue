@@ -105,6 +105,14 @@ import DiceFace from '@/components/DiceFace.vue';
         position: this.position,
         faceName,
       });
+      this.$store.dispatch('setEditingNewDiceFace', {
+        playerName: 'Nathan',
+        isEditingNewDiceFace: false,
+      });
+      this.$store.dispatch('setEditingNewDiceFacePosition', {
+        playerName: 'Nathan',
+        editingNewDiceFacePosition: undefined,
+      });
     },
   },
   components: {

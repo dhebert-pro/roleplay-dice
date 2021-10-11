@@ -1,5 +1,5 @@
 <template>
-  <div v-show="showSelectDice">
+  <div v-show="isEditingNewDiceFace && position === editingNewDiceFacePosition">
     <div class="modal" @click.prevent="closeModal">
       <div style="height: 100%"></div>
     </div>
@@ -32,9 +32,7 @@ import IconMask from '@/components/Icons/IconMask.vue';
     position: Number,
   },
   data() {
-    return {
-      showSelectDice: false,
-    };
+    return {};
   },
   computed: {
     iconColor() {
@@ -76,14 +74,33 @@ import IconMask from '@/components/Icons/IconMask.vue';
         '--bg-color': `rgb(${this.color[0]},${this.color[1]},${this.color[2]})`,
       };
     },
+    isEditingNewDiceFace() {
+      return this.$store.getters.isEditingNewDiceFaceFromPlayer('Nathan');
+    },
+    editingNewDiceFacePosition() {
+      return this.$store.getters.editingNewDiceFacePositionFromPlayer('Nathan');
+    },
   },
   methods: {
     closeModal() {
-      // A appeler
-      this.showSelectDice = false;
+      this.$store.dispatch('setEditingNewDiceFace', {
+        playerName: 'Nathan',
+        isEditingNewDiceFace: false,
+      });
+      this.$store.dispatch('setEditingNewDiceFacePosition', {
+        playerName: 'Nathan',
+        editingNewDiceFacePosition: undefined,
+      });
     },
     openModal() {
-      this.showSelectDice = true;
+      this.$store.dispatch('setEditingNewDiceFace', {
+        playerName: 'Nathan',
+        isEditingNewDiceFace: true,
+      });
+      this.$store.dispatch('setEditingNewDiceFacePosition', {
+        playerName: 'Nathan',
+        editingNewDiceFacePosition: this.position,
+      });
     },
   },
   components: {

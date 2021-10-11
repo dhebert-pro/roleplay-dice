@@ -68,6 +68,12 @@ const store: Store<ApplicationStoreModel> = createStore({
     isRollingFromPlayer: (_, getters) => (
       playerName: string,
     ) => getters.playerByName(playerName)?.isRolling,
+    isEditingNewDiceFaceFromPlayer: (_, getters) => (
+      playerName: string,
+    ) => getters.playerByName(playerName)?.isEditingNewDiceFace,
+    editingNewDiceFacePositionFromPlayer: (_, getters) => (
+      playerName: string,
+    ) => getters.playerByName(playerName)?.editingNewDiceFacePosition,
   },
   mutations: {
     swapFace(state, { position, playerName, selectedFace }) {
@@ -123,6 +129,18 @@ const store: Store<ApplicationStoreModel> = createStore({
         player.isRolling = isRolling;
       }
     },
+    setEditingNewDiceFace(state, { playerName, isEditingNewDiceFace }) {
+      const player: PlayerModel | undefined = getPlayerByName(state, playerName);
+      if (player) {
+        player.isEditingNewDiceFace = isEditingNewDiceFace;
+      }
+    },
+    setEditingNewDiceFacePosition(state, { playerName, editingNewDiceFacePosition }) {
+      const player: PlayerModel | undefined = getPlayerByName(state, playerName);
+      if (player) {
+        player.editingNewDiceFacePosition = editingNewDiceFacePosition;
+      }
+    },
   },
   actions: {
     swapFace({ commit }, payload) {
@@ -142,6 +160,12 @@ const store: Store<ApplicationStoreModel> = createStore({
     },
     changeNewDiceName({ commit }, payload) {
       commit('changeNewDiceName', payload);
+    },
+    setEditingNewDiceFace({ commit }, payload) {
+      commit('setEditingNewDiceFace', payload);
+    },
+    setEditingNewDiceFacePosition({ commit }, payload) {
+      commit('setEditingNewDiceFacePosition', payload);
     },
     async roll({ commit, getters }, { playerName, nbIterations, delay }) {
       const player: PlayerModel | undefined = getters.playerByName(playerName);
