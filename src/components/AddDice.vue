@@ -1,7 +1,7 @@
 <template>
   <h3>Ajouter un dé</h3>
   <div class="line">
-    <input class="diceName" v-model="diceName" />
+    <input class="diceName" :value="diceName" @input="setDiceName" />
     <div class="faces">
       <new-dice :dice="newDice" />
       <input type="button" value="Ajouter le dé" @click="addDice" />
@@ -17,24 +17,23 @@ import NewDice from '@/components/NewDice.vue';
     diceCount: Number,
   },
   data() {
-    return {
-      diceName: '',
-    };
+    return {};
   },
   computed: {
+    diceName() {
+      return this.$store.getters.newDiceFromPlayer('Nathan').label;
+    },
     newDice() {
       return this.$store.getters.newDiceFromPlayer('Nathan');
     },
   },
-  watch: {
-    diceName(newDiceName) {
+  methods: {
+    setDiceName(event: any) {
       this.$store.dispatch('changeNewDiceName', {
         playerName: 'Nathan',
-        diceName: newDiceName,
+        diceName: event?.target?.value,
       });
     },
-  },
-  methods: {
     addDice() {
       this.$store.dispatch('addDice', {
         playerName: 'Nathan',
