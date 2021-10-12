@@ -1,13 +1,13 @@
 <template>
   <div>
     <h1>Lancer les dés</h1>
-    <div v-show="dices.length">
+    <div v-show="dices?.length">
       <player-dices :dices="dices" :isRolling="isRolling" />
       <dices :dices="dices" />
     </div>
-    <p class="warning" v-show="!dices.length">Aucun dé n'a été trouvé</p>
+    <p class="warning" v-show="!dices || !dices.length">Aucun dé n'a été trouvé</p>
     <input type="button" value="Ajouter un dé" @click="showAddDice" />
-    <add-dice :diceCount="dices.length" v-if="newDice" />
+    <add-dice :diceCount="dices?.length || 0" v-if="newDice" />
   </div>
 </template>
 <script lang="ts">
@@ -36,7 +36,7 @@ import AddDice from '@/components/AddDice.vue';
     showAddDice() {
       this.$store.dispatch('addNewDice', {
         playerName: 'Nathan',
-        diceCount: this.dices.length,
+        diceCount: this.dices?.length || 0,
       });
     },
   },
