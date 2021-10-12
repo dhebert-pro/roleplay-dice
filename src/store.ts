@@ -19,6 +19,7 @@ const sleep = (delay: number) => new Promise((resolve) => setTimeout(resolve, de
 const store: Store<ApplicationStoreModel> = createStore({
   modules: {
     player: {
+      namespaced: true,
       state() {
         return {
           players: [

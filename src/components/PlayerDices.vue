@@ -32,7 +32,7 @@ import { DiceModel, getColorFromDice } from '@/models/DiceModel';
       return getColorFromDice(dice);
     },
     rollDices() {
-      this.$store.dispatch('roll', {
+      this.$store.dispatch('player/roll', {
         playerName: 'Nathan',
         nbIterations: 20,
         delay: 100,

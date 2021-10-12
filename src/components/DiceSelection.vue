@@ -100,16 +100,16 @@ import DiceFace from '@/components/DiceFace.vue';
   computed: {},
   methods: {
     addFace(faceName: FaceType) {
-      this.$store.dispatch('switchNewDiceFace', {
+      this.$store.dispatch('player/switchNewDiceFace', {
         playerName: 'Nathan',
         position: this.position,
         faceName,
       });
-      this.$store.dispatch('setEditingNewDiceFace', {
+      this.$store.dispatch('player/setEditingNewDiceFace', {
         playerName: 'Nathan',
         isEditingNewDiceFace: false,
       });
-      this.$store.dispatch('setEditingNewDiceFacePosition', {
+      this.$store.dispatch('player/setEditingNewDiceFacePosition', {
         playerName: 'Nathan',
         editingNewDiceFacePosition: undefined,
       });

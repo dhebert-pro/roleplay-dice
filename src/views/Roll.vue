@@ -5,7 +5,9 @@
       <player-dices :dices="dices" :isRolling="isRolling" />
       <dices :dices="dices" />
     </div>
-    <p class="warning" v-show="!dices || !dices.length">Aucun dé n'a été trouvé</p>
+    <p class="warning" v-show="!dices || !dices.length">
+      Aucun dé n'a été trouvé
+    </p>
     <input type="button" value="Ajouter un dé" @click="showAddDice" />
     <add-dice :diceCount="dices?.length || 0" v-if="newDice" />
   </div>
@@ -22,19 +24,19 @@ import AddDice from '@/components/AddDice.vue';
   },
   computed: {
     dices() {
-      return this.$store.getters.dicesFromPlayer('Nathan');
+      return this.$store.getters['player/dicesFromPlayer']('Nathan');
     },
     newDice() {
-      return this.$store.getters.newDiceFromPlayer('Nathan');
+      return this.$store.getters['player/newDiceFromPlayer']('Nathan');
     },
     isRolling() {
-      return this.$store.getters.isRollingFromPlayer('Nathan');
+      return this.$store.getters['player/isRollingFromPlayer']('Nathan');
     },
   },
   watch: {},
   methods: {
     showAddDice() {
-      this.$store.dispatch('addNewDice', {
+      this.$store.dispatch('player/addNewDice', {
         playerName: 'Nathan',
         diceCount: this.dices?.length || 0,
       });

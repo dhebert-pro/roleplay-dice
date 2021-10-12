@@ -75,29 +75,33 @@ import IconMask from '@/components/Icons/IconMask.vue';
       };
     },
     isEditingNewDiceFace() {
-      return this.$store.getters.isEditingNewDiceFaceFromPlayer('Nathan');
+      return this.$store.getters['player/isEditingNewDiceFaceFromPlayer'](
+        'Nathan',
+      );
     },
     editingNewDiceFacePosition() {
-      return this.$store.getters.editingNewDiceFacePositionFromPlayer('Nathan');
+      return this.$store.getters['player/editingNewDiceFacePositionFromPlayer'](
+        'Nathan',
+      );
     },
   },
   methods: {
     closeModal() {
-      this.$store.dispatch('setEditingNewDiceFace', {
+      this.$store.dispatch('player/setEditingNewDiceFace', {
         playerName: 'Nathan',
         isEditingNewDiceFace: false,
       });
-      this.$store.dispatch('setEditingNewDiceFacePosition', {
+      this.$store.dispatch('player/setEditingNewDiceFacePosition', {
         playerName: 'Nathan',
         editingNewDiceFacePosition: undefined,
       });
     },
     openModal() {
-      this.$store.dispatch('setEditingNewDiceFace', {
+      this.$store.dispatch('player/setEditingNewDiceFace', {
         playerName: 'Nathan',
         isEditingNewDiceFace: true,
       });
-      this.$store.dispatch('setEditingNewDiceFacePosition', {
+      this.$store.dispatch('player/setEditingNewDiceFacePosition', {
         playerName: 'Nathan',
         editingNewDiceFacePosition: this.position,
       });

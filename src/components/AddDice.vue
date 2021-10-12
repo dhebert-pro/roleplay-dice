@@ -21,28 +21,28 @@ import NewDice from '@/components/NewDice.vue';
   },
   computed: {
     diceName() {
-      return this.$store.getters.newDiceFromPlayer('Nathan').label;
+      return this.$store.getters['player/newDiceFromPlayer']('Nathan').label;
     },
     newDice() {
-      return this.$store.getters.newDiceFromPlayer('Nathan');
+      return this.$store.getters['player/newDiceFromPlayer']('Nathan');
     },
   },
   methods: {
     setDiceName(event: any) {
-      this.$store.dispatch('changeNewDiceName', {
+      this.$store.dispatch('player/changeNewDiceName', {
         playerName: 'Nathan',
         diceName: event?.target?.value,
       });
     },
     addDice() {
-      this.$store.dispatch('addDice', {
+      this.$store.dispatch('player/addDice', {
         playerName: 'Nathan',
         dice: this.newDice,
       });
       this.clearDice();
     },
     clearDice() {
-      this.$store.dispatch('clearNewDice', {
+      this.$store.dispatch('player/clearNewDice', {
         playerName: 'Nathan',
       });
     },
