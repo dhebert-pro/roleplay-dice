@@ -1,5 +1,4 @@
 import { FaceType } from '@/models/DiceModel';
-
 import { PlayerModel } from '@/models/PlayerModel';
 
 export interface PlayerStateModel {

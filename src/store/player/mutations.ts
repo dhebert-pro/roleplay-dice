@@ -1,6 +1,21 @@
-import { DiceModel, FaceType } from '@/models/DiceModel';
+import {
+  FaceType, DiceModel,
+} from '@/models/DiceModel';
 import { PlayerModel } from '@/models/PlayerModel';
-import { getPlayerByName, PlayerStateModel } from './state';
+import {
+  ADD_DICE,
+  ADD_NEW_DICE,
+  CHANGE_DICE_NAME,
+  CLEAR_NEW_DICE,
+  SET_EDITING_NEW_DICE_FACE,
+  SET_EDITING_NEW_DICE_FACE_POSITION,
+  SET_ROLLING,
+  SWAP_FACE,
+  SWITCH_NEW_DICE_FACE,
+} from '@/store/player/mutationTypes';
+import {
+  PlayerStateModel, getPlayerByName,
+} from '@/store/player/state';
 
 const swapFace = (state: PlayerStateModel, {
   position,
@@ -105,13 +120,13 @@ const setEditingNewDiceFacePosition = (state: PlayerStateModel, {
 };
 
 export default {
-  swapFace,
-  addDice,
-  addNewDice,
-  clearNewDice,
-  switchNewDiceFace,
-  changeNewDiceName,
-  setRolling,
-  setEditingNewDiceFace,
-  setEditingNewDiceFacePosition,
+  [SWAP_FACE]: swapFace,
+  [ADD_DICE]: addDice,
+  [ADD_NEW_DICE]: addNewDice,
+  [CLEAR_NEW_DICE]: clearNewDice,
+  [SWITCH_NEW_DICE_FACE]: switchNewDiceFace,
+  [CHANGE_DICE_NAME]: changeNewDiceName,
+  [SET_ROLLING]: setRolling,
+  [SET_EDITING_NEW_DICE_FACE]: setEditingNewDiceFace,
+  [SET_EDITING_NEW_DICE_FACE_POSITION]: setEditingNewDiceFacePosition,
 };

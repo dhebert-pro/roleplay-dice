@@ -12,8 +12,11 @@
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+
 import DiceFace from '@/components/DiceFace.vue';
 import { DiceModel, getColorFromDice } from '@/models/DiceModel';
+import { ROLL_ACTION } from '@/store/player/actionTypes';
+import { PLAYER_MODULE_NAME } from '@/store/player/store';
 
 @Options({
   props: {
@@ -32,7 +35,7 @@ import { DiceModel, getColorFromDice } from '@/models/DiceModel';
       return getColorFromDice(dice);
     },
     rollDices() {
-      this.$store.dispatch('player/roll', {
+      this.$store.dispatch(`${PLAYER_MODULE_NAME}/${ROLL_ACTION}`, {
         playerName: 'Nathan',
         nbIterations: 20,
         delay: 100,

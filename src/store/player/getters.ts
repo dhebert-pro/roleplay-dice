@@ -1,48 +1,56 @@
 import { DiceModel } from '@/models/DiceModel';
 import { PlayerModel } from '@/models/PlayerModel';
+import {
+  PLAYER,
+  DICES,
+  NEW_DICE,
+  IS_ROLLING,
+  IS_EDITING_NEW_DICE_FACE,
+  EDITING_NEW_DICE_FACE_POSITION,
+} from '@/store/player/getterTypes';
 import { PlayerStateModel, getPlayerByName } from '@/store/player/state';
 
 export interface PlayerGettersModel {
-  playerByName: (_: string) => PlayerModel | undefined,
-  dicesFromPlayer: (_: string) => Array<DiceModel>,
-  newDiceFromPlayer: (_: string) => DiceModel | undefined,
-  isRollingFromPlayer: (_: string) => boolean,
-  isEditingNewDiceFaceFromPlayer: (_: string) => boolean,
-  editingNewDiceFacePositionFromPlayer: (_: string) => number | undefined
+  [PLAYER]: (_: string) => PlayerModel | undefined,
+  [DICES]: (_: string) => Array<DiceModel>,
+  [NEW_DICE]: (_: string) => DiceModel | undefined,
+  [IS_ROLLING]: (_: string) => boolean,
+  [IS_EDITING_NEW_DICE_FACE]: (_: string) => boolean,
+  [EDITING_NEW_DICE_FACE_POSITION]: (_: string) => number | undefined
 }
 
-const playerByName = (state: PlayerStateModel) => (
+const getPlayer = (state: PlayerStateModel) => (
   playerName: string,
 ): PlayerModel | undefined => getPlayerByName(state, playerName);
 
-const dicesFromPlayer = (_state: PlayerStateModel, getters: PlayerGettersModel) => (
+const getDices = (_state: PlayerStateModel, getters: PlayerGettersModel) => (
   playerName: string,
-): Array<DiceModel> => getters.playerByName(playerName)?.dices ?? [];
+): Array<DiceModel> => getters.player(playerName)?.dices ?? [];
 
-const newDiceFromPlayer = (_state: PlayerStateModel, getters: PlayerGettersModel) => (
+const getNewDice = (_state: PlayerStateModel, getters: PlayerGettersModel) => (
   playerName: string,
-): DiceModel | undefined => getters.playerByName(playerName)?.newDice;
+): DiceModel | undefined => getters.player(playerName)?.newDice;
 
-const isRollingFromPlayer = (_state: PlayerStateModel, getters: PlayerGettersModel) => (
+const isRolling = (_state: PlayerStateModel, getters: PlayerGettersModel) => (
   playerName: string,
-): boolean => !!getters.playerByName(playerName)?.isRolling;
+): boolean => !!getters.player(playerName)?.isRolling;
 
-const isEditingNewDiceFaceFromPlayer = (_state: PlayerStateModel, getters: PlayerGettersModel) => (
+const isEditingNewDiceFace = (_state: PlayerStateModel, getters: PlayerGettersModel) => (
   playerName: string,
-): boolean => !!getters.playerByName(playerName)?.isEditingNewDiceFace;
+): boolean => !!getters.player(playerName)?.isEditingNewDiceFace;
 
-const editingNewDiceFacePositionFromPlayer = (
+const getEditingNewDiceFacePosition = (
   _state: PlayerStateModel,
   getters: PlayerGettersModel,
 ) => (
   playerName: string,
-  ): number | undefined => getters.playerByName(playerName)?.editingNewDiceFacePosition;
+  ): number | undefined => getters.player(playerName)?.editingNewDiceFacePosition;
 
 export default {
-  playerByName,
-  dicesFromPlayer,
-  newDiceFromPlayer,
-  isRollingFromPlayer,
-  isEditingNewDiceFaceFromPlayer,
-  editingNewDiceFacePositionFromPlayer,
+  [PLAYER]: getPlayer,
+  [DICES]: getDices,
+  [NEW_DICE]: getNewDice,
+  [IS_ROLLING]: isRolling,
+  [IS_EDITING_NEW_DICE_FACE]: isEditingNewDiceFace,
+  [EDITING_NEW_DICE_FACE_POSITION]: getEditingNewDiceFacePosition,
 };

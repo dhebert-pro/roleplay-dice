@@ -14,9 +14,13 @@
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+
+import AddDice from '@/components/AddDice.vue';
 import Dices from '@/components/Dices.vue';
 import PlayerDices from '@/components/PlayerDices.vue';
-import AddDice from '@/components/AddDice.vue';
+import { ADD_NEW_DICE_ACTION } from '@/store/player/actionTypes';
+import { DICES, IS_ROLLING, NEW_DICE } from '@/store/player/getterTypes';
+import { PLAYER_MODULE_NAME } from '@/store/player/store';
 
 @Options({
   data() {
@@ -24,19 +28,21 @@ import AddDice from '@/components/AddDice.vue';
   },
   computed: {
     dices() {
-      return this.$store.getters['player/dicesFromPlayer']('Nathan');
+      return this.$store.getters[`${PLAYER_MODULE_NAME}/${DICES}`]('Nathan');
     },
     newDice() {
-      return this.$store.getters['player/newDiceFromPlayer']('Nathan');
+      return this.$store.getters[`${PLAYER_MODULE_NAME}/${NEW_DICE}`]('Nathan');
     },
     isRolling() {
-      return this.$store.getters['player/isRollingFromPlayer']('Nathan');
+      return this.$store.getters[`${PLAYER_MODULE_NAME}/${IS_ROLLING}`](
+        'Nathan',
+      );
     },
   },
   watch: {},
   methods: {
     showAddDice() {
-      this.$store.dispatch('player/addNewDice', {
+      this.$store.dispatch(`${PLAYER_MODULE_NAME}/${ADD_NEW_DICE_ACTION}`, {
         playerName: 'Nathan',
         diceCount: this.dices?.length || 0,
       });

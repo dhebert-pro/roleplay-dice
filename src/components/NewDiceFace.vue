@@ -11,19 +11,29 @@
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import { FaceType } from '@/models/DiceModel';
+
 import DiceSelection from '@/components/DiceSelection.vue';
-import IconHeart from '@/components/Icons/IconHeart.vue';
-import IconSword from '@/components/Icons/IconSword.vue';
-import IconShield from '@/components/Icons/IconShield.vue';
+import IconBow from '@/components/Icons/IconBow.vue';
 import IconFootprints from '@/components/Icons/IconFootprints.vue';
+import IconGears from '@/components/Icons/IconGears.vue';
+import IconHeart from '@/components/Icons/IconHeart.vue';
+import IconMask from '@/components/Icons/IconMask.vue';
+import IconPotion from '@/components/Icons/IconPotion.vue';
+import IconShield from '@/components/Icons/IconShield.vue';
+import IconSpear from '@/components/Icons/IconSpear.vue';
+import IconSword from '@/components/Icons/IconSword.vue';
 import IconTrap from '@/components/Icons/IconTrap.vue';
 import IconWand from '@/components/Icons/IconWand.vue';
-import IconBow from '@/components/Icons/IconBow.vue';
-import IconPotion from '@/components/Icons/IconPotion.vue';
-import IconSpear from '@/components/Icons/IconSpear.vue';
-import IconGears from '@/components/Icons/IconGears.vue';
-import IconMask from '@/components/Icons/IconMask.vue';
+import { FaceType } from '@/models/DiceModel';
+import {
+  SET_EDITING_NEW_DICE_FACE_ACTION,
+  SET_EDITING_NEW_DICE_FACE_POSITION_ACTION,
+} from '@/store/player/actionTypes';
+import {
+  EDITING_NEW_DICE_FACE_POSITION,
+  IS_EDITING_NEW_DICE_FACE,
+} from '@/store/player/getterTypes';
+import { PLAYER_MODULE_NAME } from '@/store/player/store';
 
 @Options({
   props: {
@@ -75,36 +85,48 @@ import IconMask from '@/components/Icons/IconMask.vue';
       };
     },
     isEditingNewDiceFace() {
-      return this.$store.getters['player/isEditingNewDiceFaceFromPlayer'](
-        'Nathan',
-      );
+      return this.$store.getters[
+        `${PLAYER_MODULE_NAME}/${IS_EDITING_NEW_DICE_FACE}`
+      ]('Nathan');
     },
     editingNewDiceFacePosition() {
-      return this.$store.getters['player/editingNewDiceFacePositionFromPlayer'](
-        'Nathan',
-      );
+      return this.$store.getters[
+        `${PLAYER_MODULE_NAME}/${EDITING_NEW_DICE_FACE_POSITION}`
+      ]('Nathan');
     },
   },
   methods: {
     closeModal() {
-      this.$store.dispatch('player/setEditingNewDiceFace', {
-        playerName: 'Nathan',
-        isEditingNewDiceFace: false,
-      });
-      this.$store.dispatch('player/setEditingNewDiceFacePosition', {
-        playerName: 'Nathan',
-        editingNewDiceFacePosition: undefined,
-      });
+      this.$store.dispatch(
+        `${PLAYER_MODULE_NAME}/${SET_EDITING_NEW_DICE_FACE_ACTION}`,
+        {
+          playerName: 'Nathan',
+          isEditingNewDiceFace: false,
+        },
+      );
+      this.$store.dispatch(
+        `${PLAYER_MODULE_NAME}/${SET_EDITING_NEW_DICE_FACE_POSITION_ACTION}`,
+        {
+          playerName: 'Nathan',
+          editingNewDiceFacePosition: undefined,
+        },
+      );
     },
     openModal() {
-      this.$store.dispatch('player/setEditingNewDiceFace', {
-        playerName: 'Nathan',
-        isEditingNewDiceFace: true,
-      });
-      this.$store.dispatch('player/setEditingNewDiceFacePosition', {
-        playerName: 'Nathan',
-        editingNewDiceFacePosition: this.position,
-      });
+      this.$store.dispatch(
+        `${PLAYER_MODULE_NAME}/${SET_EDITING_NEW_DICE_FACE_ACTION}`,
+        {
+          playerName: 'Nathan',
+          isEditingNewDiceFace: true,
+        },
+      );
+      this.$store.dispatch(
+        `${PLAYER_MODULE_NAME}/${SET_EDITING_NEW_DICE_FACE_POSITION_ACTION}`,
+        {
+          playerName: 'Nathan',
+          editingNewDiceFacePosition: this.position,
+        },
+      );
     },
   },
   components: {

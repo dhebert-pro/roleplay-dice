@@ -84,8 +84,15 @@
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import { FaceType } from '@/models/DiceModel';
+
 import DiceFace from '@/components/DiceFace.vue';
+import { FaceType } from '@/models/DiceModel';
+import {
+  SET_EDITING_NEW_DICE_FACE_ACTION,
+  SET_EDITING_NEW_DICE_FACE_POSITION_ACTION,
+  SWITCH_NEW_DICE_FACE_ACTION,
+} from '@/store/player/actionTypes';
+import { PLAYER_MODULE_NAME } from '@/store/player/store';
 
 @Options({
   props: {
@@ -100,19 +107,28 @@ import DiceFace from '@/components/DiceFace.vue';
   computed: {},
   methods: {
     addFace(faceName: FaceType) {
-      this.$store.dispatch('player/switchNewDiceFace', {
-        playerName: 'Nathan',
-        position: this.position,
-        faceName,
-      });
-      this.$store.dispatch('player/setEditingNewDiceFace', {
-        playerName: 'Nathan',
-        isEditingNewDiceFace: false,
-      });
-      this.$store.dispatch('player/setEditingNewDiceFacePosition', {
-        playerName: 'Nathan',
-        editingNewDiceFacePosition: undefined,
-      });
+      this.$store.dispatch(
+        `${PLAYER_MODULE_NAME}/${SWITCH_NEW_DICE_FACE_ACTION}`,
+        {
+          playerName: 'Nathan',
+          position: this.position,
+          faceName,
+        },
+      );
+      this.$store.dispatch(
+        `${PLAYER_MODULE_NAME}/${SET_EDITING_NEW_DICE_FACE_ACTION}`,
+        {
+          playerName: 'Nathan',
+          isEditingNewDiceFace: false,
+        },
+      );
+      this.$store.dispatch(
+        `${PLAYER_MODULE_NAME}/${SET_EDITING_NEW_DICE_FACE_POSITION_ACTION}`,
+        {
+          playerName: 'Nathan',
+          editingNewDiceFacePosition: undefined,
+        },
+      );
     },
   },
   components: {

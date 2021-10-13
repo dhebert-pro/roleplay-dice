@@ -10,7 +10,15 @@
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+
 import NewDice from '@/components/NewDice.vue';
+import {
+  ADD_DICE_ACTION,
+  CHANGE_NEW_DICE_NAME_ACTION,
+  CLEAR_NEW_DICE_ACTION,
+} from '@/store/player/actionTypes';
+import { NEW_DICE } from '@/store/player/getterTypes';
+import { PLAYER_MODULE_NAME } from '@/store/player/store';
 
 @Options({
   props: {
@@ -21,28 +29,32 @@ import NewDice from '@/components/NewDice.vue';
   },
   computed: {
     diceName() {
-      return this.$store.getters['player/newDiceFromPlayer']('Nathan').label;
+      return this.$store.getters[`${PLAYER_MODULE_NAME}/${NEW_DICE}`]('Nathan')
+        .label;
     },
     newDice() {
-      return this.$store.getters['player/newDiceFromPlayer']('Nathan');
+      return this.$store.getters[`${PLAYER_MODULE_NAME}/${NEW_DICE}`]('Nathan');
     },
   },
   methods: {
     setDiceName(event: any) {
-      this.$store.dispatch('player/changeNewDiceName', {
-        playerName: 'Nathan',
-        diceName: event?.target?.value,
-      });
+      this.$store.dispatch(
+        `${PLAYER_MODULE_NAME}/${CHANGE_NEW_DICE_NAME_ACTION}`,
+        {
+          playerName: 'Nathan',
+          diceName: event?.target?.value,
+        },
+      );
     },
     addDice() {
-      this.$store.dispatch('player/addDice', {
+      this.$store.dispatch(`${PLAYER_MODULE_NAME}/${ADD_DICE_ACTION}`, {
         playerName: 'Nathan',
         dice: this.newDice,
       });
       this.clearDice();
     },
     clearDice() {
-      this.$store.dispatch('player/clearNewDice', {
+      this.$store.dispatch(`${PLAYER_MODULE_NAME}/${CLEAR_NEW_DICE_ACTION}`, {
         playerName: 'Nathan',
       });
     },

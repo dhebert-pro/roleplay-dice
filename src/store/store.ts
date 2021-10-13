@@ -1,20 +1,13 @@
-import { createStore, Store } from 'vuex';
-import playerState from '@/store/player/state';
-import playerGetters from '@/store/player/getters';
-import playerMutations from '@/store/player/mutations';
-import playerActions from '@/store/player/actions';
-import { ApplicationStoreModel } from '@/models/ApplicationStoreModel';
+import {
+  Store, createStore,
+} from 'vuex';
 
-// Create a new store instance.
+import { ApplicationStoreModel } from '@/models/ApplicationStoreModel';
+import playerModule, { PLAYER_MODULE_NAME } from '@/store/player/store';
+
 const store: Store<ApplicationStoreModel> = createStore({
   modules: {
-    player: {
-      namespaced: true,
-      state: () => playerState,
-      getters: playerGetters,
-      mutations: playerMutations,
-      actions: playerActions,
-    },
+    [PLAYER_MODULE_NAME]: playerModule,
   },
 });
 export default store;
