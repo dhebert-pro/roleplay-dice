@@ -5,5 +5,6 @@ module.exports = {
     "operator-linebreak": 0,
     "no-await-in-loop": 0,
     "@typescript-eslint/no-explicit-any": 0,
+    "indent": 0
   }
 }
