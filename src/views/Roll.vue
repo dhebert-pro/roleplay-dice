@@ -61,7 +61,6 @@ export default class Roll extends Vue {}
 .fade-enter-active,
 .fade-leave-active {
   transform: scaleY(1);
-  transform-origin: top;
   opacity: 1;
   transition: transform 0.1s, opacity 0.1s ease-in;
 }
@@ -69,7 +68,6 @@ export default class Roll extends Vue {}
 .fade-enter-from,
 .fade-leave-to {
   transform: scaleY(0);
-  transform-origin: top;
   opacity: 0;
 }
 </style>

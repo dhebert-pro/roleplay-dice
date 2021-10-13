@@ -11,39 +11,38 @@
     version="1.1"
     id="svg8"
   >
-    <g :fill="color">
-      <defs id="defs3645">
-        <linearGradient id="linearGradient4491">
-          <stop
-            style="stop-color: #000000; stop-opacity: 1"
-            offset="0"
-            id="stop4487"
-          />
-          <stop
-            style="stop-color: #1895ab; stop-opacity: 1"
-            offset="1"
-            id="stop4489"
-          />
-        </linearGradient>
-        <radialGradient
-          xlink:href="#linearGradient4491"
-          id="radialGradient4493"
-          cx="60.105625"
-          cy="67.347954"
-          fx="60.105625"
-          fy="67.347954"
-          r="13.404326"
-          gradientTransform="matrix(
+    <defs id="defs3645">
+      <linearGradient id="linearGradient4491">
+        <stop
+          style="stop-color: #000000; stop-opacity: 1"
+          offset="0"
+          id="stop4487"
+        />
+        <stop
+          style="stop-color: #1895ab; stop-opacity: 1"
+          offset="1"
+          id="stop4489"
+        />
+      </linearGradient>
+      <radialGradient
+        xlink:href="#linearGradient4491"
+        id="radialGradient4493"
+        cx="60.105625"
+        cy="67.347954"
+        fx="60.105625"
+        fy="67.347954"
+        r="13.404326"
+        gradientTransform="matrix(
             -0.5851099,-1.0327548,0.94395323,-0.53478583,31.700525,165.54369
             )"
-          gradientUnits="userSpaceOnUse"
-        />
-      </defs>
-      <g id="layer1" transform="translate(-70.484044,-74.387958)">
-        <path
-          style="fill: url(#radialGradient4493); fill-opacity: 1; stroke: none"
-          id="path4218"
-          d="m
+        gradientUnits="userSpaceOnUse"
+      />
+    </defs>
+    <g id="layer1" transform="translate(-70.484044,-74.387958)">
+      <path
+        style="fill: url(#radialGradient4493); fill-opacity: 1; stroke: none"
+        id="path4218"
+        d="m
         69.054486,74.319418 c -1.066534,1.217618 -10.231857,6.734997
         -11.67187,6.316409 -1.440013,-0.418588 -10.196094,-10.096335
         -10.694577,-11.631971 -0.498483,-1.535637 -0.04501,-10.271107
@@ -51,17 +50,17 @@
         14.932876,-5.808304 1.477419,0.287419 9.962928,7.015445
         10.694531,8.480188 0.731604,1.464743 -3.077729,13.035837
         -4.144263,14.253455 z"
-          transform="matrix(1.8340221,-1.2158138,1.2157019,1.834191,-86.53651,56.160271)"
-        />
-        <path
-          id="rect4244"
-          style="
-            fill: #ffffff;
-            fill-opacity: 1;
-            stroke: none;
-            stroke-width: 7.76271;
-          "
-          d="m 71.408955,104.18682
+        transform="matrix(1.8340221,-1.2158138,1.2157019,1.834191,-86.53651,56.160271)"
+      />
+      <path
+        id="rect4244"
+        style="
+          fill: #ffffff;
+          fill-opacity: 1;
+          stroke: none;
+          stroke-width: 7.76271;
+        "
+        d="m 71.408955,104.18682
         -0.138072,0.57176 32.322457,7.79768 a 1.0136129,1.0137062 0 0 1
         0.1327,-0.57367 z M 120.47262,79.365705 105.16816,111.64735 a
         1.0136129,1.0137062 0 0 1 0.28088,0.28175 1.0136129,1.0137062 0 0 1
@@ -70,16 +69,16 @@
         -0.72348,0.48916 11.59372,20.35091 0.51103,-0.29102 -11.57269,-20.313 a
         1.0136129,1.0137062 0 0 1 -0.1226,0.0949 1.0136129,1.0137062 0 0 1
         -0.40945,0.15819 z"
-        />
-        <path
-          id="path4286"
-          style="
-            fill: #ffffff;
-            fill-opacity: 1;
-            stroke: none;
-            stroke-width: 7.57501;
-          "
-          d="m 83.016258,113.17626 a
+      />
+      <path
+        id="path4286"
+        style="
+          fill: #ffffff;
+          fill-opacity: 1;
+          stroke: none;
+          stroke-width: 7.57501;
+        "
+        d="m 83.016258,113.17626 a
         13.168876,7.506163 22.429327 0 0 -1.826434,2.20674 13.168876,7.506163
         22.429327 0 0 9.487512,11.9391 13.168876,7.506163 22.429327 0 0
         14.924464,-2.05578 13.168876,7.506163 22.429327 0 0 -9.486563,-11.93973
@@ -89,16 +88,16 @@
         22.429328 0 1 -12.535324,1.72713 11.061479,6.3049619 22.429328 0 1
         -7.969017,-10.02885 11.061479,6.3049619 22.429328 0 1 1.607398,-1.90326
         z"
-        />
-        <path
-          id="path4308"
-          style="
-            fill: #ffffff;
-            fill-opacity: 1;
-            stroke: none;
-            stroke-width: 4.67906;
-          "
-          d="m 86.984583,115.90914 a
+      />
+      <path
+        id="path4308"
+        style="
+          fill: #ffffff;
+          fill-opacity: 1;
+          stroke: none;
+          stroke-width: 4.67906;
+        "
+        d="m 86.984583,115.90914 a
         8.1343707,4.6365316 22.429326 0 0 -1.12818,1.36309 8.1343707,4.6365316
         22.429326 0 0 5.860403,7.37474 8.1343707,4.6365316 22.429326 0 0
         9.218794,-1.26985 8.1343707,4.6365316 22.429326 0 0 -5.85982,-7.37513
@@ -107,8 +106,7 @@
         22.429327 0 1 4.921463,6.19459 6.8326389,3.8945539 22.429327 0 1
         -7.74303,1.06684 6.8326389,3.8945539 22.429327 0 1 -4.922433,-6.19478
         6.8326389,3.8945539 22.429327 0 1 0.992884,-1.17564 z"
-        />
-      </g>
+      />
     </g>
   </svg>
 </template>
@@ -117,10 +115,6 @@ import { Options, Vue } from 'vue-class-component';
 
 @Options({
   props: {
-    color: {
-      type: String,
-      default: 'rgb(0,0,0)',
-    },
     width: {
       type: String,
       default: 60,
