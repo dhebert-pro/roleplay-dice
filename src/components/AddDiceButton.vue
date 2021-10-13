@@ -79,7 +79,7 @@ export default class __FileName extends Vue {}
   }
 }
 .tooltip {
-  top: 60px;
+  top: 51px;
   position: fixed;
   left: 100px;
   border: 1px solid;

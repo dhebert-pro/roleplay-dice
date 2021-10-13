@@ -12,13 +12,13 @@
 import { Options, Vue } from 'vue-class-component';
 
 import NewDice from '@/components/NewDice.vue';
+import { PLAYER_MODULE_NAME } from '@/store/player/store';
 import {
   ADD_DICE_ACTION,
   CHANGE_NEW_DICE_NAME_ACTION,
   CLEAR_NEW_DICE_ACTION,
 } from '@/store/player/types/actionTypes';
 import { NEW_DICE } from '@/store/player/types/getterTypes';
-import { PLAYER_MODULE_NAME } from '@/store/player/store';
 
 @Options({
   props: {
