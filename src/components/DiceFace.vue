@@ -5,22 +5,28 @@
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+
+import IconBow from '@/components/icons/faces/IconBow.vue';
+import IconFootprints from '@/components/icons/faces/IconFootprints.vue';
+import IconGears from '@/components/icons/faces/IconGears.vue';
+import IconHeart from '@/components/icons/faces/IconHeart.vue';
+import IconMask from '@/components/icons/faces/IconMask.vue';
+import IconPotion from '@/components/icons/faces/IconPotion.vue';
+import IconShield from '@/components/icons/faces/IconShield.vue';
+import IconSpear from '@/components/icons/faces/IconSpear.vue';
+import IconSword from '@/components/icons/faces/IconSword.vue';
+import IconTrap from '@/components/icons/faces/IconTrap.vue';
+import IconWand from '@/components/icons/faces/IconWand.vue';
 import { FaceType } from '@/models/DiceModel';
-import IconHeart from '@/components/Icons/IconHeart.vue';
-import IconSword from '@/components/Icons/IconSword.vue';
-import IconShield from '@/components/Icons/IconShield.vue';
-import IconFootprints from '@/components/Icons/IconFootprints.vue';
-import IconTrap from '@/components/Icons/IconTrap.vue';
-import IconWand from '@/components/Icons/IconWand.vue';
-import IconBow from '@/components/Icons/IconBow.vue';
-import IconPotion from '@/components/Icons/IconPotion.vue';
-import IconSpear from '@/components/Icons/IconSpear.vue';
-import IconGears from '@/components/Icons/IconGears.vue';
-import IconMask from '@/components/Icons/IconMask.vue';
 
 @Options({
   props: {
-    color: Array,
+    color: {
+      type: Array,
+      default() {
+        return [255, 255, 255];
+      },
+    },
     value: FaceType,
   },
   computed: {

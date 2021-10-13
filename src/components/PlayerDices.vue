@@ -15,8 +15,8 @@ import { Options, Vue } from 'vue-class-component';
 
 import DiceFace from '@/components/DiceFace.vue';
 import { DiceModel, getColorFromDice } from '@/models/DiceModel';
-import { ROLL_ACTION } from '@/store/player/actionTypes';
 import { PLAYER_MODULE_NAME } from '@/store/player/store';
+import { ROLL_ACTION } from '@/store/player/types/actionTypes';
 
 @Options({
   props: {

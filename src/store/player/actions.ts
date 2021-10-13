@@ -16,7 +16,7 @@ import {
   SWAP_FACE_ACTION,
   SWITCH_NEW_DICE_FACE_ACTION,
   ROLL_ACTION,
-} from '@/store/player/actionTypes';
+} from '@/store/player/types/actionTypes';
 import {
   ADD_DICE,
   ADD_NEW_DICE,
@@ -27,7 +27,7 @@ import {
   SET_ROLLING,
   SWAP_FACE,
   SWITCH_NEW_DICE_FACE,
-} from '@/store/player/mutationTypes';
+} from '@/store/player/types/mutationTypes';
 
 const sleep = (delay: number) => new Promise((resolve) => setTimeout(resolve, delay));
 

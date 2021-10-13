@@ -1,5 +1,6 @@
 import { DiceModel } from '@/models/DiceModel';
 import { PlayerModel } from '@/models/PlayerModel';
+import { PlayerStateModel, getPlayerByName } from '@/store/player/state';
 import {
   PLAYER,
   DICES,
@@ -7,8 +8,7 @@ import {
   IS_ROLLING,
   IS_EDITING_NEW_DICE_FACE,
   EDITING_NEW_DICE_FACE_POSITION,
-} from '@/store/player/getterTypes';
-import { PlayerStateModel, getPlayerByName } from '@/store/player/state';
+} from '@/store/player/types/getterTypes';
 
 export interface PlayerGettersModel {
   [PLAYER]: (_: string) => PlayerModel | undefined,

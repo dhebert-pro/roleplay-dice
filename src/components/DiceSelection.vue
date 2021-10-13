@@ -87,12 +87,12 @@ import { Options, Vue } from 'vue-class-component';
 
 import DiceFace from '@/components/DiceFace.vue';
 import { FaceType } from '@/models/DiceModel';
+import { PLAYER_MODULE_NAME } from '@/store/player/store';
 import {
   SET_EDITING_NEW_DICE_FACE_ACTION,
   SET_EDITING_NEW_DICE_FACE_POSITION_ACTION,
   SWITCH_NEW_DICE_FACE_ACTION,
-} from '@/store/player/actionTypes';
-import { PLAYER_MODULE_NAME } from '@/store/player/store';
+} from '@/store/player/types/actionTypes';
 
 @Options({
   props: {

@@ -8,7 +8,7 @@
     <p class="warning" v-show="!dices || !dices.length">
       Aucun dé n'a été trouvé
     </p>
-    <input type="button" value="Ajouter un dé" @click="showAddDice" />
+    <add-dice-button />
     <add-dice :diceCount="dices?.length || 0" v-if="newDice" />
   </div>
 </template>
@@ -16,10 +16,10 @@
 import { Options, Vue } from 'vue-class-component';
 
 import AddDice from '@/components/AddDice.vue';
+import AddDiceButton from '@/components/AddDiceButton.vue';
 import Dices from '@/components/Dices.vue';
 import PlayerDices from '@/components/PlayerDices.vue';
-import { ADD_NEW_DICE_ACTION } from '@/store/player/actionTypes';
-import { DICES, IS_ROLLING, NEW_DICE } from '@/store/player/getterTypes';
+import { DICES, IS_ROLLING, NEW_DICE } from '@/store/player/types/getterTypes';
 import { PLAYER_MODULE_NAME } from '@/store/player/store';
 
 @Options({
@@ -40,18 +40,12 @@ import { PLAYER_MODULE_NAME } from '@/store/player/store';
     },
   },
   watch: {},
-  methods: {
-    showAddDice() {
-      this.$store.dispatch(`${PLAYER_MODULE_NAME}/${ADD_NEW_DICE_ACTION}`, {
-        playerName: 'Nathan',
-        diceCount: this.dices?.length || 0,
-      });
-    },
-  },
+  methods: {},
   components: {
     Dices,
     PlayerDices,
     AddDice,
+    AddDiceButton,
   },
 })
 export default class Roll extends Vue {}

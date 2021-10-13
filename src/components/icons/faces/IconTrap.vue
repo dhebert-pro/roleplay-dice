@@ -146,9 +146,18 @@ import { Options, Vue } from 'vue-class-component';
 
 @Options({
   props: {
-    color: String,
-    width: String,
-    height: String,
+    color: {
+      type: String,
+      default: 'rgb(0,0,0)',
+    },
+    width: {
+      type: String,
+      default: 60,
+    },
+    height: {
+      type: String,
+      default: 60,
+    },
   },
 })
 export default class IconTrap extends Vue {}

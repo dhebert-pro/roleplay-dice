@@ -3,6 +3,9 @@ import {
 } from '@/models/DiceModel';
 import { PlayerModel } from '@/models/PlayerModel';
 import {
+  PlayerStateModel, getPlayerByName,
+} from '@/store/player/state';
+import {
   ADD_DICE,
   ADD_NEW_DICE,
   CHANGE_DICE_NAME,
@@ -12,10 +15,7 @@ import {
   SET_ROLLING,
   SWAP_FACE,
   SWITCH_NEW_DICE_FACE,
-} from '@/store/player/mutationTypes';
-import {
-  PlayerStateModel, getPlayerByName,
-} from '@/store/player/state';
+} from '@/store/player/types/mutationTypes';
 
 const swapFace = (state: PlayerStateModel, {
   position,
