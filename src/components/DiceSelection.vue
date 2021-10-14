@@ -159,5 +159,6 @@ export default class DiceSelection extends Vue {}
 .dice {
   flex: 0 0 80px;
   cursor: pointer;
+  box-sizing: border-box;
 }
 </style>

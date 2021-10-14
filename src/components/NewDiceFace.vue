@@ -158,6 +158,7 @@ export default class NewDiceFace extends Vue {}
   box-shadow: 5px 5px 5px #bbb;
   cursor: pointer;
   user-select: none;
+  box-sizing: border-box;
 }
 .modal {
   position: fixed;

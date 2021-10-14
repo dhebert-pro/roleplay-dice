@@ -10,6 +10,7 @@
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+
 import Dice from '@/components/Dice.vue';
 
 @Options({
@@ -36,6 +37,7 @@ export default class Dices extends Vue {}
   text-align: left;
   flex: 0 0 200px;
   font-weight: bold;
+  box-sizing: border-box;
 }
 .faces {
   flex: 1;

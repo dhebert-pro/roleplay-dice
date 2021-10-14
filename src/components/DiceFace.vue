@@ -98,5 +98,6 @@ export default class DiceFace extends Vue {}
   border-radius: 10px;
   box-shadow: 5px 5px 5px #bbb;
   user-select: none;
+  box-sizing: border-box;
 }
 </style>

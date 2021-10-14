@@ -1,7 +1,13 @@
 <template>
   <h3>Ajouter un dé</h3>
   <div class="line">
-    <input class="diceName" :value="diceName" @input="setDiceName" />
+    <input
+      type="text"
+      class="diceName"
+      :value="diceName"
+      @input="setDiceName"
+      placeholder="Nom de l'objet"
+    />
     <div class="faces">
       <new-dice :dice="newDice" />
       <div class="actions">
@@ -81,6 +87,7 @@ export default class AddDice extends Vue {}
 .diceName {
   text-align: left;
   flex: 0 0 200px;
+  box-sizing: border-box;
 }
 .faces {
   flex: 1;
@@ -94,6 +101,5 @@ export default class AddDice extends Vue {}
 }
 .actions {
   margin-left: 20px;
-  user-select: none;
 }
 </style>

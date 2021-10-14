@@ -6,6 +6,7 @@
 <script lang="ts">
 import { PropType } from 'vue';
 import { Options, Vue } from 'vue-class-component';
+
 import NewDiceFace from '@/components/NewDiceFace.vue';
 import { DiceModel, getColorFromDice } from '@/models/DiceModel';
 
@@ -30,5 +31,6 @@ export default class NewDice extends Vue {}
   flex: 0 0 80px;
   height: 80px;
   margin: 0 10px;
+  box-sizing: border-box;
 }
 </style>

@@ -66,6 +66,7 @@ export default class __FileName extends Vue {}
   z-index: 2;
   background-color: #ffffff;
   user-select: none;
+  box-sizing: border-box;
 
   &:hover {
     width: 120px;

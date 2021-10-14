@@ -66,5 +66,6 @@ export default class PlayerDices extends Vue {}
   height: 80px;
   margin: 0 10px;
   opacity: var(--opacity);
+  box-sizing: border-box;
 }
 </style>
