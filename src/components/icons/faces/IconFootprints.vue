@@ -1,21 +1,8 @@
 <template>
-  <svg
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:cc="http://creativecommons.org/ns#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:svg="http://www.w3.org/2000/svg"
-    xmlns="http://www.w3.org/2000/svg"
-    :width="width"
-    :height="height"
-    viewBox="0 0 60 60"
-    version="1.1"
-    id="svg8"
-  >
-    <g :fill="color">
-      <g id="layer1" transform="translate(-23.435314,-72.585329)">
-        <path
-          id="path2118"
-          d="m
+  <g id="layer1" transform="translate(-23.435314,-72.585329)">
+    <path
+      id="path2118"
+      d="m
         63.942358,116.19579 c 1.268653,-3.94276 1.377126,-5.29716
         0.638476,-7.97217 -0.620176,-2.24596 -0.645833,-3.19997
         -0.151632,-5.63889 0.294922,-1.45544 0.473596,-1.9357 1.282877,-3.448221
@@ -30,10 +17,10 @@
         6.1456226,8.133116 11.485919 0 0 4.408492,9.18919 6.1456226,8.133116
         11.485919 0 0 7.638924,-6.7531 6.1456226,8.133116 11.485919 0 0
         0.182263,-2.89181 z"
-        />
-        <path
-          id="path2118-6"
-          d="m
+    />
+    <path
+      id="path2118-6"
+      d="m
         41.964243,100.58976 c -1.016868,-4.014922 -1.039501,-5.373466
         -0.133218,-7.996535 0.760924,-2.202351 0.84684,-3.152843
         0.507805,-5.618068 -0.20232,-1.47114 -0.350277,-1.961715
@@ -48,29 +35,6 @@
         8.1329385,6.145757 82.147897 0 1 0.782877,2.78998 8.1329385,6.145757
         82.147897 0 1 -4.980614,8.89274 8.1329385,6.145757 82.147897 0 1
         -7.196757,-7.22153 8.1329385,6.145757 82.147897 0 1 9.29e-4,-2.89754 z"
-        />
-      </g>
-    </g>
-  </svg>
+    />
+  </g>
 </template>
-<script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-
-@Options({
-  props: {
-    color: {
-      type: String,
-      default: 'rgb(0,0,0)',
-    },
-    width: {
-      type: String,
-      default: 60,
-    },
-    height: {
-      type: String,
-      default: 60,
-    },
-  },
-})
-export default class IconFootprints extends Vue {}
-</script>

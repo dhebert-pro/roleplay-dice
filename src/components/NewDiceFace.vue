@@ -6,24 +6,14 @@
     <dice-selection :color="color" :position="position" />
   </div>
   <div :style="cssVars" class="dice" @click.prevent="openModal">
-    <component :is="iconName" :color="iconColor" width="50" height="50" />
+    <icon-base :iconName="iconName" :color="iconColor" width="50" height="50" />
   </div>
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 
 import DiceSelection from '@/components/DiceSelection.vue';
-import IconBow from '@/components/icons/faces/IconBow.vue';
-import IconFootprints from '@/components/icons/faces/IconFootprints.vue';
-import IconGears from '@/components/icons/faces/IconGears.vue';
-import IconHeart from '@/components/icons/faces/IconHeart.vue';
-import IconMask from '@/components/icons/faces/IconMask.vue';
-import IconPotion from '@/components/icons/faces/IconPotion.vue';
-import IconShield from '@/components/icons/faces/IconShield.vue';
-import IconSpear from '@/components/icons/faces/IconSpear.vue';
-import IconSword from '@/components/icons/faces/IconSword.vue';
-import IconTrap from '@/components/icons/faces/IconTrap.vue';
-import IconWand from '@/components/icons/faces/IconWand.vue';
+import IconBase from '@/components/icons/IconBase.vue';
 import { FaceType } from '@/models/DiceModel';
 import { PLAYER_MODULE_NAME } from '@/store/player/store';
 import {
@@ -130,17 +120,7 @@ import {
     },
   },
   components: {
-    IconHeart,
-    IconSword,
-    IconShield,
-    IconFootprints,
-    IconTrap,
-    IconWand,
-    IconBow,
-    IconPotion,
-    IconSpear,
-    IconGears,
-    IconMask,
+    IconBase,
     DiceSelection,
   },
 })

@@ -14,8 +14,20 @@
     <div class="faces">
       <new-dice :dice="newDice" />
       <div class="actions">
-        <icon-check class="action" @click="addDice" height="40" width="40" />
-        <icon-cross class="action" @click="clearDice" height="40" width="40" />
+        <icon-base
+          iconName="icon-check"
+          class="action"
+          @click="addDice"
+          height="40"
+          width="40"
+        />
+        <icon-base
+          iconName="icon-cross"
+          class="action"
+          @click="clearDice"
+          height="40"
+          width="40"
+        />
       </div>
     </div>
   </div>
@@ -23,8 +35,7 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 
-import IconCheck from '@/components/icons/actions/IconCheck.vue';
-import IconCross from '@/components/icons/actions/IconCross.vue';
+import IconBase from '@/components/icons/IconBase.vue';
 import NewDice from '@/components/NewDice.vue';
 import { PLAYER_MODULE_NAME } from '@/store/player/store';
 import {
@@ -78,8 +89,7 @@ import { NEW_DICE } from '@/store/player/types/getterTypes';
   },
   components: {
     NewDice,
-    IconCheck,
-    IconCross,
+    IconBase,
   },
 })
 export default class AddDice extends Vue {}

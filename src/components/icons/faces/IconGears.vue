@@ -1,21 +1,8 @@
 <template>
-  <svg
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:cc="http://creativecommons.org/ns#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:svg="http://www.w3.org/2000/svg"
-    xmlns="http://www.w3.org/2000/svg"
-    :width="width"
-    :height="height"
-    viewBox="0 0 60 60"
-    version="1.1"
-    id="svg8"
-  >
-    <g :fill="color">
-      <g id="layer1" transform="translate(-78.006421,-91.117755)">
-        <path
-          id="path7431"
-          d="m
+  <g id="layer1" transform="translate(-78.006421,-91.117755)">
+    <path
+      id="path7431"
+      d="m
         92.026891,105.46663 a 23.832499,23.973572 0 0 0 -5.204809,3.1331
         4.4685937,4.4950448 0 0 1 0.327254,0.60855 l 1.24e-4,2.9e-4 a
         4.4685937,4.4950448 0 0 1 0.01268,0.0292 4.4685937,4.4950448 0 0 1
@@ -48,10 +35,10 @@
         13.148578,5.18709 9.9869524,10.046069 0 0 1 -5.15657,13.2264
         9.9869524,10.046069 0 0 1 -13.148569,-5.18709 9.9869524,10.046069 0 0 1
         5.146688,-13.22207 z"
-        />
-        <path
-          id="path7473"
-          d="m 135.0239,94.535988 a 10.883366,10.947788 0
+    />
+    <path
+      id="path7473"
+      d="m 135.0239,94.535988 a 10.883366,10.947788 0
         0 0 -2.14544,-1.762361 2.0406312,2.0527104 0 0 1 -0.20906,0.235808 l
         -9e-5,9.5e-5 a 2.0406312,2.0527104 0 0 1 -0.0106,0.01
         2.0406312,2.0527104 0 0 1 -2.88486,-0.07825 2.0406312,2.0527104 0 0 1
@@ -83,29 +70,6 @@
         -0.17407,6.485485 4.5606489,4.5876449 0 0 1 -6.44733,-0.1751
         4.5606489,4.5876449 0 0 1 0.17406,-6.485488 4.5606489,4.5876449 0 0 1
         6.44396,0.171513 z"
-        />
-      </g>
-    </g>
-  </svg>
+    />
+  </g>
 </template>
-<script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-
-@Options({
-  props: {
-    color: {
-      type: String,
-      default: 'rgb(0,0,0)',
-    },
-    width: {
-      type: String,
-      default: 60,
-    },
-    height: {
-      type: String,
-      default: 60,
-    },
-  },
-})
-export default class IconGears extends Vue {}
-</script>

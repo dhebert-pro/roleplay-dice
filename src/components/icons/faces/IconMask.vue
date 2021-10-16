@@ -1,21 +1,8 @@
 <template>
-  <svg
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:cc="http://creativecommons.org/ns#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:svg="http://www.w3.org/2000/svg"
-    xmlns="http://www.w3.org/2000/svg"
-    :width="width"
-    :height="height"
-    viewBox="0 0 60 60"
-    version="1.1"
-    id="svg8"
-  >
-    <g :fill="color">
-      <g id="layer1" transform="translate(-47.57384,-77.19368)">
-        <path
-          id="rect878"
-          d="m 48.532856,102.52944 c -0.633263,1.71181
+  <g id="layer1" transform="translate(-47.57384,-77.19368)">
+    <path
+      id="rect878"
+      d="m 48.532856,102.52944 c -0.633263,1.71181
         -0.95897,3.54303 -0.959016,5.39184 -2.8e-5,7.88244 5.793074,14.27241
         12.93922,14.27239 4.973081,-4e-5 9.506075,-3.14393 11.661087,-8.08761
         0.765454,-1.76066 1.530907,-1.62123 2.296361,0 2.154969,4.94357
@@ -30,45 +17,22 @@
         71.131268 0 1 -6.921606,7.78897 5.4248479,8.6271 71.131268 0 1
         -9.567367,-2.75678 5.4248479,8.6271 71.131268 0 1 6.921878,-7.78898
         5.4248479,8.6271 71.131268 0 1 3.66205,-0.56969 z"
-        />
-        <ellipse
-          id="path924"
-          cx="51.621029"
-          cy="138.56635"
-          rx="6.2388077"
-          ry="2.6483231"
-          transform="matrix(0.87796619,-0.47872264,0.40896514,0.91255001,0,0)"
-        />
-        <ellipse
-          id="ellipse928"
-          cx="-52.332092"
-          cy="126.79951"
-          rx="6.6632972"
-          ry="2.4773629"
-          transform="matrix(0.32627791,-0.94527389,0.9219957,0.38720011,0,0)"
-        />
-      </g>
-    </g>
-  </svg>
+    />
+    <ellipse
+      id="path924"
+      cx="51.621029"
+      cy="138.56635"
+      rx="6.2388077"
+      ry="2.6483231"
+      transform="matrix(0.87796619,-0.47872264,0.40896514,0.91255001,0,0)"
+    />
+    <ellipse
+      id="ellipse928"
+      cx="-52.332092"
+      cy="126.79951"
+      rx="6.6632972"
+      ry="2.4773629"
+      transform="matrix(0.32627791,-0.94527389,0.9219957,0.38720011,0,0)"
+    />
+  </g>
 </template>
-<script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-
-@Options({
-  props: {
-    color: {
-      type: String,
-      default: 'rgb(0,0,0)',
-    },
-    width: {
-      type: String,
-      default: 60,
-    },
-    height: {
-      type: String,
-      default: 60,
-    },
-  },
-})
-export default class IconMask extends Vue {}
-</script>

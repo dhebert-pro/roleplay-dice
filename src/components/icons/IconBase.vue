@@ -19,7 +19,7 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 
-import IconAddDice from '@/components/icons/IconAddDice.vue';
+import Icons from '@/components/icons';
 
 @Options({
   props: {
@@ -43,9 +43,7 @@ import IconAddDice from '@/components/icons/IconAddDice.vue';
       default: false,
     },
   },
-  components: {
-    IconAddDice,
-  },
+  components: Icons,
 })
-export default class IconBow extends Vue {}
+export default class IconBase extends Vue {}
 </script>

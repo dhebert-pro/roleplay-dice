@@ -1,20 +1,7 @@
 <template>
-  <svg
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:cc="http://creativecommons.org/ns#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:svg="http://www.w3.org/2000/svg"
-    xmlns="http://www.w3.org/2000/svg"
-    :width="width"
-    :height="height"
-    viewBox="0 0 60 60"
-    version="1.1"
-    id="svg8"
-  >
-    <g :fill="color">
-      <g id="layer1" transform="translate(-72.124353,-130.78214)">
-        <path
-          d="M 100.40578,188.88712 C
+  <g id="layer1" transform="translate(-72.124353,-130.78214)">
+    <path
+      d="M 100.40578,188.88712 C
         91.350568,178.1547 75.78909,159.5095 75.38823,158.91203 c
         -1.265994,-1.88692 -2.37869,-4.47878 -2.951737,-6.87562
         -0.266102,-1.11302 -0.307181,-1.64388 -0.311768,-4.02889
@@ -29,30 +16,7 @@
         -0.57806,4.08995 -0.57456,2.39591 -1.68064,4.97377 -2.95004,6.87562
         -0.3727,0.55836 -25.81748,31.26412 -26.40745,31.86747 -0.0551,0.0563
         -0.85739,-0.79528 -1.78303,-1.89238 z"
-          id="path882"
-        />
-      </g>
-    </g>
-  </svg>
+      id="path882"
+    />
+  </g>
 </template>
-<script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-
-@Options({
-  props: {
-    color: {
-      type: String,
-      default: 'rgb(0,0,0)',
-    },
-    width: {
-      type: String,
-      default: 60,
-    },
-    height: {
-      type: String,
-      default: 60,
-    },
-  },
-})
-export default class IconHeart extends Vue {}
-</script>

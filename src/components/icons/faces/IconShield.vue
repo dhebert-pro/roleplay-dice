@@ -1,21 +1,8 @@
 <template>
-  <svg
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:cc="http://creativecommons.org/ns#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:svg="http://www.w3.org/2000/svg"
-    xmlns="http://www.w3.org/2000/svg"
-    :width="width"
-    :height="height"
-    viewBox="0 0 60 60"
-    version="1.1"
-    id="svg8"
-  >
-    <g :fill="color">
-      <g id="layer1" transform="translate(-58.344135,-100)">
-        <path
-          id="path1516"
-          d="m 58.39319,100.00153 c
+  <g id="layer1" transform="translate(-58.344135,-100)">
+    <path
+      id="path1516"
+      d="m 58.39319,100.00153 c
         -0.01788,-0.0025 -0.02893,-0.002 -0.03287,0.002 -0.06294,0.0624
         0.06335,2.05751 0.280603,4.43351 1.877363,20.53137 6.331217,35.43505
         13.349532,44.67157 1.765136,2.32302 5.257314,5.66043 7.387123,7.05971
@@ -36,29 +23,6 @@
         -4.395686,0.70911 -4.354681,0.16498 -6.930001,-0.52726
         -14.402179,-3.87169 -2.111374,-0.94502 -3.90827,-1.6839
         -4.176475,-1.72113 z"
-        />
-      </g>
-    </g>
-  </svg>
+    />
+  </g>
 </template>
-<script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-
-@Options({
-  props: {
-    color: {
-      type: String,
-      default: 'rgb(0,0,0)',
-    },
-    width: {
-      type: String,
-      default: 60,
-    },
-    height: {
-      type: String,
-      default: 60,
-    },
-  },
-})
-export default class IconShield extends Vue {}
-</script>
