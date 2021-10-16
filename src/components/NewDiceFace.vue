@@ -5,15 +5,13 @@
     </div>
     <dice-selection :color="color" :position="position" />
   </div>
-  <div :style="cssVars" class="dice" @click.prevent="openModal">
-    <icon-base :iconName="iconName" :color="iconColor" width="50" height="50" />
-  </div>
+  <dice-face :color="color" :value="value" @click.prevent="openModal" />
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 
+import DiceFace from '@/components/DiceFace.vue';
 import DiceSelection from '@/components/DiceSelection.vue';
-import IconBase from '@/components/icons/IconBase.vue';
 import { FaceType } from '@/models/DiceModel';
 import { PLAYER_MODULE_NAME } from '@/store/player/store';
 import {
@@ -35,45 +33,6 @@ import {
     return {};
   },
   computed: {
-    iconColor() {
-      const theoriticalColor =
-        this.color[0] * 0.299 + this.color[1] * 0.587 + this.color[2] * 0.114;
-      const constrastColor = theoriticalColor > 186 ? 0 : 255;
-      return `rgb(${constrastColor}, ${constrastColor}, ${constrastColor})`;
-    },
-    iconName() {
-      switch (this.value) {
-        case FaceType.ATTACK:
-          return 'icon-sword';
-        case FaceType.HEAL:
-          return 'icon-heart';
-        case FaceType.DEFENSE:
-          return 'icon-shield';
-        case FaceType.MOVE:
-          return 'icon-footprints';
-        case FaceType.TRAP:
-          return 'icon-trap';
-        case FaceType.MAGIC:
-          return 'icon-wand';
-        case FaceType.DISTANCE:
-          return 'icon-bow';
-        case FaceType.POTION:
-          return 'icon-potion';
-        case FaceType.RANGE:
-          return 'icon-spear';
-        case FaceType.MECHANIC:
-          return 'icon-gears';
-        case FaceType.STEAL:
-          return 'icon-mask';
-        default:
-          return undefined;
-      }
-    },
-    cssVars() {
-      return {
-        '--bg-color': `rgb(${this.color[0]},${this.color[1]},${this.color[2]})`,
-      };
-    },
     isEditingNewDiceFace() {
       return this.$store.getters[
         `${PLAYER_MODULE_NAME}/${IS_EDITING_NEW_DICE_FACE}`
@@ -120,26 +79,13 @@ import {
     },
   },
   components: {
-    IconBase,
+    DiceFace,
     DiceSelection,
   },
 })
 export default class NewDiceFace extends Vue {}
 </script>
 <style scoped>
-.dice {
-  height: 100%;
-  background-color: var(--bg-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid black;
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px #bbb;
-  cursor: pointer;
-  user-select: none;
-  box-sizing: border-box;
-}
 .modal {
   position: fixed;
   background-color: gray;
