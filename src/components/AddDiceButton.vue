@@ -1,8 +1,8 @@
 <template>
-  <div class="container" @mouseover="growIcon" @mouseout="shrinkIcon">
+  <div class="container">
     <icon-base
-      :width="size"
-      :height="size"
+      width="60px"
+      height="60px"
       @click="addNewDice"
       icon-name="icon-add-dice"
       noColor
@@ -20,11 +20,6 @@ import { DICES } from '@/store/player/types/getterTypes';
 
 @Options({
   props: {},
-  data() {
-    return {
-      size: '60px',
-    };
-  },
   computed: {
     dices() {
       return this.$store.getters[`${PLAYER_MODULE_NAME}/${DICES}`]('Nathan');
@@ -36,12 +31,6 @@ import { DICES } from '@/store/player/types/getterTypes';
         playerName: 'Nathan',
         diceCount: this.dices?.length || 0,
       });
-    },
-    growIcon() {
-      this.size = '80px';
-    },
-    shrinkIcon() {
-      this.size = '60px';
     },
   },
   components: { IconBase },
@@ -70,10 +59,7 @@ export default class __FileName extends Vue {}
   box-sizing: border-box;
 
   &:hover {
-    width: 120px;
-    height: 120px;
-    top: 10px;
-    left: 10px;
+    transform: scale(1.2);
   }
 
   &:hover + .tooltip {

@@ -145,6 +145,7 @@ export default class DiceSelection extends Vue {}
   border-radius: 10px;
   padding: 30px;
   margin-top: -350px;
+  width: 365px;
 }
 .container {
   display: flex;
@@ -158,6 +159,7 @@ export default class DiceSelection extends Vue {}
 }
 .dice {
   flex: 0 0 80px;
+  height: 80px;
   cursor: pointer;
   box-sizing: border-box;
 }

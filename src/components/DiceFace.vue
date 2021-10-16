@@ -68,8 +68,8 @@ export default class DiceFace extends Vue {}
 </script>
 <style scoped>
 .dice {
-  height: 80px;
-  width: 80px;
+  height: 100%;
+  width: 100%;
   background-color: var(--bg-color);
   display: flex;
   align-items: center;

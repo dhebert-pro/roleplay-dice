@@ -9,6 +9,7 @@
         :value="diceName"
         @input="setDiceName"
         placeholder="Nom de l'objet"
+        required
       />
     </form>
     <div class="faces">
@@ -116,8 +117,17 @@ export default class AddDice extends Vue {}
   cursor: pointer;
   user-select: none;
   margin-left: 20px;
+
+  &:hover {
+    transform: scale(1.4);
+  }
 }
+
 .actions {
   margin-left: 20px;
+
+  &:hover > *:not(:hover) {
+    opacity: 0.5;
+  }
 }
 </style>

@@ -5,7 +5,12 @@
     </div>
     <dice-selection :color="color" :position="position" />
   </div>
-  <dice-face :color="color" :value="value" @click.prevent="openModal" />
+  <dice-face
+    class="dice"
+    :color="color"
+    :value="value"
+    @click.prevent="openModal"
+  />
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
@@ -95,5 +100,8 @@ export default class NewDiceFace extends Vue {}
   left: 0;
   right: 0;
   user-select: none;
+}
+.dice {
+  cursor: pointer;
 }
 </style>
