@@ -1,13 +1,16 @@
 <template>
   <h3>Ajouter un dé</h3>
   <div class="line">
-    <input
-      type="text"
-      class="diceName"
-      :value="diceName"
-      @input="setDiceName"
-      placeholder="Nom de l'objet"
-    />
+    <form @submit.prevent="addDice">
+      <input
+        ref="diceName"
+        type="text"
+        class="diceName"
+        :value="diceName"
+        @input="setDiceName"
+        placeholder="Nom de l'objet"
+      />
+    </form>
     <div class="faces">
       <new-dice :dice="newDice" />
       <div class="actions">
@@ -69,6 +72,9 @@ import { NEW_DICE } from '@/store/player/types/getterTypes';
         playerName: 'Nathan',
       });
     },
+  },
+  mounted() {
+    this.$refs.diceName.focus();
   },
   components: {
     NewDice,
