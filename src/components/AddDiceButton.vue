@@ -1,10 +1,11 @@
 <template>
   <div class="container" @mouseover="growIcon" @mouseout="shrinkIcon">
-    <icon-add-dice
+    <icon-base
       :width="size"
       :height="size"
       @click="addNewDice"
-      title="Ajouter un dé"
+      icon-name="icon-add-dice"
+      noColor
     />
   </div>
   <div class="tooltip">Ajouter un dé</div>
@@ -12,7 +13,7 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 
-import IconAddDice from '@/components/icons/IconAddDice.vue';
+import IconBase from '@/components/icons/IconBase.vue';
 import { PLAYER_MODULE_NAME } from '@/store/player/store';
 import { ADD_NEW_DICE_ACTION } from '@/store/player/types/actionTypes';
 import { DICES } from '@/store/player/types/getterTypes';
@@ -43,7 +44,7 @@ import { DICES } from '@/store/player/types/getterTypes';
       this.size = '60px';
     },
   },
-  components: { IconAddDice },
+  components: { IconBase },
   emits: [],
 })
 export default class __FileName extends Vue {}
