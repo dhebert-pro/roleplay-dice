@@ -1,7 +1,7 @@
 <template>
   <h3>Ajouter un dé</h3>
   <div class="line">
-    <form @submit.prevent="addDice">
+    <form @submit.prevent="addDice" ref="diceForm">
       <input
         ref="diceName"
         type="text"
@@ -18,7 +18,7 @@
         <icon-base
           iconName="icon-check"
           class="action"
-          @click="addDice"
+          @click="submitOnButton"
           height="40"
           width="40"
           noColor
@@ -65,6 +65,9 @@ import { NEW_DICE } from '@/store/player/types/getterTypes';
     },
   },
   methods: {
+    submitOnButton() {
+      this.$refs.diceForm.submit();
+    },
     setDiceName(event: any) {
       this.$store.dispatch(
         `${PLAYER_MODULE_NAME}/${CHANGE_NEW_DICE_NAME_ACTION}`,
@@ -75,6 +78,7 @@ import { NEW_DICE } from '@/store/player/types/getterTypes';
       );
     },
     addDice() {
+      console.log('Add DICE');
       this.$store.dispatch(`${PLAYER_MODULE_NAME}/${ADD_DICE_ACTION}`, {
         playerName: 'Nathan',
         dice: this.newDice,
