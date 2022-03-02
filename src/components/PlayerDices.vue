@@ -35,11 +35,13 @@ import { ROLL_ACTION } from '@/store/player/types/actionTypes';
       return getColorFromDice(dice);
     },
     rollDices() {
-      this.$store.dispatch(`${PLAYER_MODULE_NAME}/${ROLL_ACTION}`, {
-        playerName: 'Nathan',
-        nbIterations: 20,
-        delay: 100,
-      });
+      if (!this.isRolling) {
+        this.$store.dispatch(`${PLAYER_MODULE_NAME}/${ROLL_ACTION}`, {
+          playerName: 'Nathan',
+          nbIterations: 20,
+          delay: 100,
+        });
+      }
     },
   },
   components: {

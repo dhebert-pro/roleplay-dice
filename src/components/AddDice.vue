@@ -7,9 +7,9 @@
         type="text"
         class="diceName"
         :value="diceName"
-        @input="setDiceName"
         placeholder="Nom de l'objet"
         required
+        @input="changeDiceName"
       />
     </form>
     <div class="faces">
@@ -18,7 +18,7 @@
         <icon-base
           iconName="icon-check"
           class="action"
-          @click="submitOnButton"
+          @click.prevent="submitOnButton"
           height="40"
           width="40"
           noColor
@@ -66,16 +66,8 @@ import { NEW_DICE } from '@/store/player/types/getterTypes';
   },
   methods: {
     submitOnButton() {
+      console.log('submitOnForm');
       this.$refs.diceForm.submit();
-    },
-    setDiceName(event: any) {
-      this.$store.dispatch(
-        `${PLAYER_MODULE_NAME}/${CHANGE_NEW_DICE_NAME_ACTION}`,
-        {
-          playerName: 'Nathan',
-          diceName: event?.target?.value,
-        },
-      );
     },
     addDice() {
       console.log('Add DICE');
@@ -89,6 +81,16 @@ import { NEW_DICE } from '@/store/player/types/getterTypes';
       this.$store.dispatch(`${PLAYER_MODULE_NAME}/${CLEAR_NEW_DICE_ACTION}`, {
         playerName: 'Nathan',
       });
+    },
+    changeDiceName(e: Event) {
+      const diceName = (e.target as HTMLInputElement).value;
+      this.$store.dispatch(
+        `${PLAYER_MODULE_NAME}/${CHANGE_NEW_DICE_NAME_ACTION}`,
+        {
+          playerName: 'Nathan',
+          diceName,
+        },
+      );
     },
   },
   mounted() {

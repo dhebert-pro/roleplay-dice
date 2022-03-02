@@ -7,6 +7,7 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+
 import HomeContent from '@/components/HomeContent.vue';
 
 @Options({
