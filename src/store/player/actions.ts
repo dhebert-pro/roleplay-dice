@@ -101,7 +101,7 @@ const roll = async ({
       for (let position = 0; position < diceCount; position += 1) {
         commit(SWAP_FACE, {
           position,
-          playerName: player.name,
+          playerName: player.user,
           selectedFace: Math.floor(Math.random() * 6),
         });
       }

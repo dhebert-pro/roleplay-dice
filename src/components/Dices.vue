@@ -1,6 +1,5 @@
 <template>
   <h3>Dés disponibles</h3>
-  <p>Liste des dés</p>
   <div>
     <div class="line" v-for="dice in dices" :key="dice.id">
       <div class="label">{{ dice.label }} :</div>

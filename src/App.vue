@@ -2,7 +2,8 @@
   <div>
     <div id="nav">
       <router-link to="/">Accueil</router-link> |
-      <router-link to="/roll">Lancer les dés</router-link>
+      <router-link to="/roll/nathan">Nathan</router-link> |
+      <router-link to="/roll/leane">Léane</router-link>
     </div>
     <router-view />
   </div>

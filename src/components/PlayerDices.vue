@@ -22,6 +22,7 @@ import { ROLL_ACTION } from '@/store/player/types/actionTypes';
   props: {
     dices: Array,
     isRolling: Boolean,
+    user: String,
   },
   computed: {
     cssVars() {
@@ -37,7 +38,7 @@ import { ROLL_ACTION } from '@/store/player/types/actionTypes';
     rollDices() {
       if (!this.isRolling) {
         this.$store.dispatch(`${PLAYER_MODULE_NAME}/${ROLL_ACTION}`, {
-          playerName: 'Nathan',
+          playerName: this.user,
           nbIterations: 20,
           delay: 100,
         });

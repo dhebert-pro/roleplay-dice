@@ -13,7 +13,7 @@
       />
     </form>
     <div class="faces">
-      <new-dice :dice="newDice" />
+      <new-dice :dice="newDice" :user="user" />
       <div class="actions">
         <icon-base
           iconName="icon-check"
@@ -51,17 +51,20 @@ import { NEW_DICE } from '@/store/player/types/getterTypes';
 @Options({
   props: {
     diceCount: Number,
+    user: String,
   },
   data() {
     return {};
   },
   computed: {
     diceName() {
-      return this.$store.getters[`${PLAYER_MODULE_NAME}/${NEW_DICE}`]('Nathan')
+      return this.$store.getters[`${PLAYER_MODULE_NAME}/${NEW_DICE}`](this.user)
         .label;
     },
     newDice() {
-      return this.$store.getters[`${PLAYER_MODULE_NAME}/${NEW_DICE}`]('Nathan');
+      return this.$store.getters[`${PLAYER_MODULE_NAME}/${NEW_DICE}`](
+        this.user,
+      );
     },
   },
   methods: {
@@ -72,14 +75,14 @@ import { NEW_DICE } from '@/store/player/types/getterTypes';
     addDice() {
       console.log('Add DICE');
       this.$store.dispatch(`${PLAYER_MODULE_NAME}/${ADD_DICE_ACTION}`, {
-        playerName: 'Nathan',
+        playerName: this.user,
         dice: this.newDice,
       });
       this.clearDice();
     },
     clearDice() {
       this.$store.dispatch(`${PLAYER_MODULE_NAME}/${CLEAR_NEW_DICE_ACTION}`, {
-        playerName: 'Nathan',
+        playerName: this.user,
       });
     },
     changeDiceName(e: Event) {
@@ -87,7 +90,7 @@ import { NEW_DICE } from '@/store/player/types/getterTypes';
       this.$store.dispatch(
         `${PLAYER_MODULE_NAME}/${CHANGE_NEW_DICE_NAME_ACTION}`,
         {
-          playerName: 'Nathan',
+          playerName: this.user,
           diceName,
         },
       );

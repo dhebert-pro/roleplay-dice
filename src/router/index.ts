@@ -9,12 +9,10 @@ const routes: Array<RouteRecordRaw> = [
     component: Home,
   },
   {
-    path: '/roll',
+    path: '/roll/:user',
     name: 'Roll',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '@/views/Roll.vue'),
+    component: () => import('@/views/Roll.vue'),
+    props: true,
   },
 ];
 

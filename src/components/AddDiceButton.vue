@@ -19,16 +19,18 @@ import { ADD_NEW_DICE_ACTION } from '@/store/player/types/actionTypes';
 import { DICES } from '@/store/player/types/getterTypes';
 
 @Options({
-  props: {},
+  props: {
+    user: String,
+  },
   computed: {
     dices() {
-      return this.$store.getters[`${PLAYER_MODULE_NAME}/${DICES}`]('Nathan');
+      return this.$store.getters[`${PLAYER_MODULE_NAME}/${DICES}`](this.user);
     },
   },
   methods: {
     addNewDice() {
       this.$store.dispatch(`${PLAYER_MODULE_NAME}/${ADD_NEW_DICE_ACTION}`, {
-        playerName: 'Nathan',
+        playerName: this.user,
         diceCount: this.dices?.length || 0,
       });
     },

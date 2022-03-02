@@ -3,7 +3,7 @@
     <div class="modal" @click.prevent="closeModal">
       <div style="height: 100%"></div>
     </div>
-    <dice-selection :color="color" :position="position" />
+    <dice-selection :color="color" :position="position" :user="user" />
   </div>
   <dice-face
     class="dice"
@@ -33,6 +33,7 @@ import {
     color: Array,
     value: FaceType,
     position: Number,
+    user: String,
   },
   data() {
     return {};
@@ -41,12 +42,12 @@ import {
     isEditingNewDiceFace() {
       return this.$store.getters[
         `${PLAYER_MODULE_NAME}/${IS_EDITING_NEW_DICE_FACE}`
-      ]('Nathan');
+      ](this.user);
     },
     editingNewDiceFacePosition() {
       return this.$store.getters[
         `${PLAYER_MODULE_NAME}/${EDITING_NEW_DICE_FACE_POSITION}`
-      ]('Nathan');
+      ](this.user);
     },
   },
   methods: {
@@ -54,14 +55,14 @@ import {
       this.$store.dispatch(
         `${PLAYER_MODULE_NAME}/${SET_EDITING_NEW_DICE_FACE_ACTION}`,
         {
-          playerName: 'Nathan',
+          playerName: this.user,
           isEditingNewDiceFace: false,
         },
       );
       this.$store.dispatch(
         `${PLAYER_MODULE_NAME}/${SET_EDITING_NEW_DICE_FACE_POSITION_ACTION}`,
         {
-          playerName: 'Nathan',
+          playerName: this.user,
           editingNewDiceFacePosition: undefined,
         },
       );
@@ -70,14 +71,14 @@ import {
       this.$store.dispatch(
         `${PLAYER_MODULE_NAME}/${SET_EDITING_NEW_DICE_FACE_ACTION}`,
         {
-          playerName: 'Nathan',
+          playerName: this.user,
           isEditingNewDiceFace: true,
         },
       );
       this.$store.dispatch(
         `${PLAYER_MODULE_NAME}/${SET_EDITING_NEW_DICE_FACE_POSITION_ACTION}`,
         {
-          playerName: 'Nathan',
+          playerName: this.user,
           editingNewDiceFacePosition: this.position,
         },
       );

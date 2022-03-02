@@ -98,6 +98,7 @@ import {
   props: {
     color: Array,
     position: Number,
+    user: String,
   },
   data() {
     return {
@@ -110,7 +111,7 @@ import {
       this.$store.dispatch(
         `${PLAYER_MODULE_NAME}/${SWITCH_NEW_DICE_FACE_ACTION}`,
         {
-          playerName: 'Nathan',
+          playerName: this.user,
           position: this.position,
           faceName,
         },
@@ -118,14 +119,14 @@ import {
       this.$store.dispatch(
         `${PLAYER_MODULE_NAME}/${SET_EDITING_NEW_DICE_FACE_ACTION}`,
         {
-          playerName: 'Nathan',
+          playerName: this.user,
           isEditingNewDiceFace: false,
         },
       );
       this.$store.dispatch(
         `${PLAYER_MODULE_NAME}/${SET_EDITING_NEW_DICE_FACE_POSITION_ACTION}`,
         {
-          playerName: 'Nathan',
+          playerName: this.user,
           editingNewDiceFacePosition: undefined,
         },
       );
