@@ -2,11 +2,11 @@
   <div>
     <h1>{{ firstName }}, tu peux lancer les dés</h1>
     <div v-show="dices?.length">
-      <player-dices :dices="dices" :isRolling="isRolling" :user="user" />
-      <add-dice-button :user="user" />
+      <player-dices :dices="dices" :isRolling="isRolling" />
+      <add-dice-button />
       <transition name="fade">
         <div v-if="newDice">
-          <add-dice :diceCount="dices?.length || 0" :user="user" />
+          <add-dice :diceCount="dices?.length || 0" />
         </div>
       </transition>
       <dices :dices="dices" />
@@ -25,6 +25,7 @@ import Dices from '@/components/Dices.vue';
 import PlayerDices from '@/components/PlayerDices.vue';
 import { UserModel, getUserById } from '@/models/UserModel';
 import { PLAYER_MODULE_NAME } from '@/store/player/store';
+import { SET_CURRENT_PLAYER_ACTION } from '@/store/player/types/actionTypes';
 import { DICES, IS_ROLLING, NEW_DICE } from '@/store/player/types/getterTypes';
 
 @Options({
@@ -36,9 +37,9 @@ import { DICES, IS_ROLLING, NEW_DICE } from '@/store/player/types/getterTypes';
   },
   computed: {
     firstName() {
-      const currentUser: UserModel | undefined = getUserById(this.user);
-      if (currentUser) {
-        return currentUser.name;
+      const user: UserModel | undefined = getUserById(this.user);
+      if (user) {
+        return user.name;
       }
       return '';
     },
@@ -56,8 +57,22 @@ import { DICES, IS_ROLLING, NEW_DICE } from '@/store/player/types/getterTypes';
       );
     },
   },
-  watch: {},
+  watch: {
+    user(user: string) {
+      this.$store.dispatch(
+        `${PLAYER_MODULE_NAME}/${SET_CURRENT_PLAYER_ACTION}`,
+        {
+          currentPlayer: user,
+        },
+      );
+    },
+  },
   methods: {},
+  mounted() {
+    this.$store.dispatch(`${PLAYER_MODULE_NAME}/${SET_CURRENT_PLAYER_ACTION}`, {
+      currentPlayer: this.user,
+    });
+  },
   components: {
     Dices,
     PlayerDices,

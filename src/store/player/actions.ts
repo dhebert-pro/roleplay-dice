@@ -16,12 +16,14 @@ import {
   SWAP_FACE_ACTION,
   SWITCH_NEW_DICE_FACE_ACTION,
   ROLL_ACTION,
+  SET_CURRENT_PLAYER_ACTION,
 } from '@/store/player/types/actionTypes';
 import {
   ADD_DICE,
   ADD_NEW_DICE,
   CHANGE_DICE_NAME,
   CLEAR_NEW_DICE,
+  SET_CURRENT_PLAYER,
   SET_EDITING_NEW_DICE_FACE,
   SET_EDITING_NEW_DICE_FACE_POSITION,
   SET_ROLLING,
@@ -109,6 +111,11 @@ const roll = async ({
     commit(SET_ROLLING, { playerName, isRolling: false });
   }
 };
+const setCurrentPlayer = ({ commit }: { commit: Commit }, payload: {
+  currentPlayer: string,
+}): void => {
+  commit(SET_CURRENT_PLAYER, payload);
+};
 
 export default {
   [SWAP_FACE_ACTION]: swapFace,
@@ -120,4 +127,5 @@ export default {
   [SET_EDITING_NEW_DICE_FACE_ACTION]: setEditingNewDiceFace,
   [SET_EDITING_NEW_DICE_FACE_POSITION_ACTION]: setEditingNewDiceFacePosition,
   [ROLL_ACTION]: roll,
+  [SET_CURRENT_PLAYER_ACTION]: setCurrentPlayer,
 };

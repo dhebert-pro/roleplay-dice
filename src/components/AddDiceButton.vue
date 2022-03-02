@@ -16,13 +16,14 @@ import { Options, Vue } from 'vue-class-component';
 import IconBase from '@/components/icons/IconBase.vue';
 import { PLAYER_MODULE_NAME } from '@/store/player/store';
 import { ADD_NEW_DICE_ACTION } from '@/store/player/types/actionTypes';
-import { DICES } from '@/store/player/types/getterTypes';
+import { CURRENT_PLAYER, DICES } from '@/store/player/types/getterTypes';
 
 @Options({
-  props: {
-    user: String,
-  },
+  props: {},
   computed: {
+    user() {
+      return this.$store.getters[`${PLAYER_MODULE_NAME}/${CURRENT_PLAYER}`]();
+    },
     dices() {
       return this.$store.getters[`${PLAYER_MODULE_NAME}/${DICES}`](this.user);
     },

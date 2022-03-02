@@ -17,14 +17,17 @@ import DiceFace from '@/components/DiceFace.vue';
 import { DiceModel, getColorFromDice } from '@/models/DiceModel';
 import { PLAYER_MODULE_NAME } from '@/store/player/store';
 import { ROLL_ACTION } from '@/store/player/types/actionTypes';
+import { CURRENT_PLAYER } from '@/store/player/types/getterTypes';
 
 @Options({
   props: {
     dices: Array,
     isRolling: Boolean,
-    user: String,
   },
   computed: {
+    user() {
+      return this.$store.getters[`${PLAYER_MODULE_NAME}/${CURRENT_PLAYER}`]();
+    },
     cssVars() {
       return {
         '--opacity': this.isRolling ? 0.8 : 1,

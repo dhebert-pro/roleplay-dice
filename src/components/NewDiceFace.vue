@@ -3,7 +3,7 @@
     <div class="modal" @click.prevent="closeModal">
       <div style="height: 100%"></div>
     </div>
-    <dice-selection :color="color" :position="position" :user="user" />
+    <dice-selection :color="color" :position="position" />
   </div>
   <dice-face
     class="dice"
@@ -24,6 +24,7 @@ import {
   SET_EDITING_NEW_DICE_FACE_POSITION_ACTION,
 } from '@/store/player/types/actionTypes';
 import {
+  CURRENT_PLAYER,
   EDITING_NEW_DICE_FACE_POSITION,
   IS_EDITING_NEW_DICE_FACE,
 } from '@/store/player/types/getterTypes';
@@ -33,12 +34,14 @@ import {
     color: Array,
     value: FaceType,
     position: Number,
-    user: String,
   },
   data() {
     return {};
   },
   computed: {
+    user() {
+      return this.$store.getters[`${PLAYER_MODULE_NAME}/${CURRENT_PLAYER}`]();
+    },
     isEditingNewDiceFace() {
       return this.$store.getters[
         `${PLAYER_MODULE_NAME}/${IS_EDITING_NEW_DICE_FACE}`

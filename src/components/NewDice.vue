@@ -1,11 +1,6 @@
 <template>
   <div class="container" v-for="(face, index) in dice.faces" :key="index">
-    <new-dice-face
-      :position="index"
-      :color="color"
-      :value="face"
-      :user="user"
-    />
+    <new-dice-face :position="index" :color="color" :value="face" />
   </div>
 </template>
 <script lang="ts">
@@ -18,7 +13,6 @@ import { DiceModel, getColorFromDice } from '@/models/DiceModel';
 @Options({
   props: {
     dice: Object as PropType<DiceModel>,
-    user: String,
   },
   computed: {
     color() {

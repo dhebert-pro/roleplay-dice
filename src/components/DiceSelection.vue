@@ -93,19 +93,23 @@ import {
   SET_EDITING_NEW_DICE_FACE_POSITION_ACTION,
   SWITCH_NEW_DICE_FACE_ACTION,
 } from '@/store/player/types/actionTypes';
+import { CURRENT_PLAYER } from '@/store/player/types/getterTypes';
 
 @Options({
   props: {
     color: Array,
     position: Number,
-    user: String,
   },
   data() {
     return {
       FaceType,
     };
   },
-  computed: {},
+  computed: {
+    user() {
+      return this.$store.getters[`${PLAYER_MODULE_NAME}/${CURRENT_PLAYER}`]();
+    },
+  },
   methods: {
     addFace(faceName: FaceType) {
       this.$store.dispatch(

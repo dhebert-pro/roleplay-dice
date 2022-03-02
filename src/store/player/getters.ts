@@ -8,6 +8,7 @@ import {
   IS_ROLLING,
   IS_EDITING_NEW_DICE_FACE,
   EDITING_NEW_DICE_FACE_POSITION,
+  CURRENT_PLAYER,
 } from '@/store/player/types/getterTypes';
 
 export interface PlayerGettersModel {
@@ -16,8 +17,12 @@ export interface PlayerGettersModel {
   [NEW_DICE]: (_: string) => DiceModel | undefined,
   [IS_ROLLING]: (_: string) => boolean,
   [IS_EDITING_NEW_DICE_FACE]: (_: string) => boolean,
-  [EDITING_NEW_DICE_FACE_POSITION]: (_: string) => number | undefined
+  [EDITING_NEW_DICE_FACE_POSITION]: (_: string) => number | undefined,
+  [CURRENT_PLAYER]: (_: string) => string | undefined
 }
+
+const getCurrentPlayer = (state: PlayerStateModel) => (
+): string | undefined => state.currentPlayer;
 
 const getPlayer = (state: PlayerStateModel) => (
   playerName: string,
@@ -53,4 +58,5 @@ export default {
   [IS_ROLLING]: isRolling,
   [IS_EDITING_NEW_DICE_FACE]: isEditingNewDiceFace,
   [EDITING_NEW_DICE_FACE_POSITION]: getEditingNewDiceFacePosition,
+  [CURRENT_PLAYER]: getCurrentPlayer,
 };

@@ -4,6 +4,7 @@ import { PlayerModel } from '@/models/PlayerModel';
 import { UserModel } from '@/models/UserModel';
 
 export interface PlayerStateModel {
+  currentPlayer: string,
   players: Array<PlayerModel>;
 }
 
@@ -39,6 +40,7 @@ const getPlayers = (): Array<PlayerModel> => {
 };
 
 const playerState: PlayerStateModel = {
+  currentPlayer: '',
   players: getPlayers(),
 };
 

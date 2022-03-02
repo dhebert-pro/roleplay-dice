@@ -13,7 +13,7 @@
       />
     </form>
     <div class="faces">
-      <new-dice :dice="newDice" :user="user" />
+      <new-dice :dice="newDice" />
       <div class="actions">
         <icon-base
           iconName="icon-check"
@@ -46,17 +46,19 @@ import {
   CHANGE_NEW_DICE_NAME_ACTION,
   CLEAR_NEW_DICE_ACTION,
 } from '@/store/player/types/actionTypes';
-import { NEW_DICE } from '@/store/player/types/getterTypes';
+import { CURRENT_PLAYER, NEW_DICE } from '@/store/player/types/getterTypes';
 
 @Options({
   props: {
     diceCount: Number,
-    user: String,
   },
   data() {
     return {};
   },
   computed: {
+    user() {
+      return this.$store.getters[`${PLAYER_MODULE_NAME}/${CURRENT_PLAYER}`]();
+    },
     diceName() {
       return this.$store.getters[`${PLAYER_MODULE_NAME}/${NEW_DICE}`](this.user)
         .label;

@@ -15,6 +15,7 @@ import {
   SET_ROLLING,
   SWAP_FACE,
   SWITCH_NEW_DICE_FACE,
+  SET_CURRENT_PLAYER,
 } from '@/store/player/types/mutationTypes';
 
 const swapFace = (state: PlayerStateModel, {
@@ -119,6 +120,12 @@ const setEditingNewDiceFacePosition = (state: PlayerStateModel, {
   }
 };
 
+const setCurrentPlayer = (state: PlayerStateModel, {
+  currentPlayer,
+}: { currentPlayer: string }): void => {
+  state.currentPlayer = currentPlayer;
+};
+
 export default {
   [SWAP_FACE]: swapFace,
   [ADD_DICE]: addDice,
@@ -129,4 +136,5 @@ export default {
   [SET_ROLLING]: setRolling,
   [SET_EDITING_NEW_DICE_FACE]: setEditingNewDiceFace,
   [SET_EDITING_NEW_DICE_FACE_POSITION]: setEditingNewDiceFacePosition,
+  [SET_CURRENT_PLAYER]: setCurrentPlayer,
 };
