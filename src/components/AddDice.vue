@@ -61,7 +61,7 @@ import { CURRENT_PLAYER, NEW_DICE } from '@/store/player/types/getterTypes';
     },
     diceName() {
       return this.$store.getters[`${PLAYER_MODULE_NAME}/${NEW_DICE}`](this.user)
-        .label;
+        ?.label;
     },
     newDice() {
       return this.$store.getters[`${PLAYER_MODULE_NAME}/${NEW_DICE}`](

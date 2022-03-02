@@ -1,5 +1,5 @@
 <template>
-  <div class="container" v-for="(face, index) in dice.faces" :key="index">
+  <div class="container" v-for="(face, index) in dice?.faces" :key="index">
     <dice-face :color="color" :value="face" />
   </div>
 </template>
