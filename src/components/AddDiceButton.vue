@@ -1,11 +1,6 @@
 <template>
-  <div class="container">
-    <icon-base
-      width="60px"
-      height="60px"
-      @click="addNewDice"
-      icon-name="icon-add-dice"
-    />
+  <div class="container" @click="addNewDice">
+    <icon-base width="60px" height="60px" icon-name="icon-add-dice" />
   </div>
   <div class="tooltip">Ajouter un dé</div>
 </template>

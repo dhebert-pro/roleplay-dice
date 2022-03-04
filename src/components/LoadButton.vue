@@ -1,11 +1,6 @@
 <template>
-  <div class="container">
-    <icon-base
-      width="60px"
-      height="60px"
-      @click="loadGame"
-      icon-name="icon-load"
-    />
+  <div class="container" @click="loadGame">
+    <icon-base width="60px" height="60px" icon-name="icon-load" />
   </div>
   <div class="tooltip">Charger</div>
 </template>

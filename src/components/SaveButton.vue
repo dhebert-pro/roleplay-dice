@@ -1,11 +1,6 @@
 <template>
-  <div class="container">
-    <icon-base
-      width="60px"
-      height="60px"
-      @click="saveGame"
-      icon-name="icon-floppy"
-    />
+  <div class="container" @click="saveGame">
+    <icon-base width="60px" height="60px" icon-name="icon-floppy" />
   </div>
   <div class="tooltip">Sauvegarder</div>
 </template>
