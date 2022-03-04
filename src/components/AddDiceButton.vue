@@ -5,7 +5,6 @@
       height="60px"
       @click="addNewDice"
       icon-name="icon-add-dice"
-      noColor
     />
   </div>
   <div class="tooltip">Ajouter un dé</div>
@@ -30,6 +29,38 @@ import { CURRENT_PLAYER, DICES } from '@/store/player/types/getterTypes';
   },
   methods: {
     addNewDice() {
+      this.$store.state.player = {
+        currentPlayer: 'nathan',
+        players: [
+          {
+            user: 'leane',
+            dices: [
+              { id: '0', label: 'Départ', faces: [0, 1, 9, 11, 11, 11] },
+              { id: '1', label: 'bbbbb', faces: [1, 11, 11, 11, 11, 11] },
+            ],
+            isEditingNewDiceFace: false,
+          },
+          {
+            user: 'nathan',
+            dices: [
+              {
+                id: '0',
+                label: 'Départ',
+                faces: [0, 1, 9, 11, 11, 11],
+                selectedFace: 1,
+              },
+              {
+                id: '1',
+                label: 'aaaaa',
+                faces: [0, 11, 11, 11, 11, 11],
+                selectedFace: 1,
+              },
+            ],
+            isEditingNewDiceFace: false,
+            isRolling: false,
+          },
+        ],
+      };
       this.$store.dispatch(`${PLAYER_MODULE_NAME}/${ADD_NEW_DICE_ACTION}`, {
         playerName: this.user,
         diceCount: this.dices?.length || 0,

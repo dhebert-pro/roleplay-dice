@@ -38,10 +38,6 @@ import Icons from '@/components/icons';
     iconName: {
       type: String,
     },
-    noColor: {
-      type: Boolean,
-      default: false,
-    },
   },
   components: Icons,
 })

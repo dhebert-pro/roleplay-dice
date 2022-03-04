@@ -14,6 +14,8 @@
     <p class="warning" v-show="!dices || !dices.length">
       Aucun dé n'a été trouvé
     </p>
+    <save-button />
+    <load-button />
   </div>
 </template>
 <script lang="ts">
@@ -22,7 +24,9 @@ import { Options, Vue } from 'vue-class-component';
 import AddDice from '@/components/AddDice.vue';
 import AddDiceButton from '@/components/AddDiceButton.vue';
 import Dices from '@/components/Dices.vue';
+import LoadButton from '@/components/LoadButton.vue';
 import PlayerDices from '@/components/PlayerDices.vue';
+import SaveButton from '@/components/SaveButton.vue';
 import { UserModel, getUserById } from '@/models/UserModel';
 import { PLAYER_MODULE_NAME } from '@/store/player/store';
 import { SET_CURRENT_PLAYER_ACTION } from '@/store/player/types/actionTypes';
@@ -78,6 +82,8 @@ import { DICES, IS_ROLLING, NEW_DICE } from '@/store/player/types/getterTypes';
     PlayerDices,
     AddDice,
     AddDiceButton,
+    SaveButton,
+    LoadButton,
   },
 })
 export default class Roll extends Vue {}

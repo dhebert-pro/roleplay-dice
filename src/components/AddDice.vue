@@ -21,7 +21,6 @@
           @click.prevent="submitOnButton"
           height="40"
           width="40"
-          noColor
         />
         <icon-base
           iconName="icon-cross"
@@ -29,7 +28,6 @@
           @click="clearDice"
           height="40"
           width="40"
-          noColor
         />
       </div>
     </div>
