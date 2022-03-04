@@ -17,6 +17,8 @@ import {
   SWAP_FACE,
   SWITCH_NEW_DICE_FACE,
   SET_CURRENT_PLAYER,
+  SAVE,
+  LOAD,
 } from '@/store/player/types/mutationTypes';
 
 const swapFace = (state: PlayerStateModel, {
@@ -139,6 +141,17 @@ const setCurrentPlayer = (state: PlayerStateModel, {
   state.currentPlayer = currentPlayer;
 };
 
+const save = (state: PlayerStateModel): void => {
+  localStorage.setItem('rollDicePlayer', JSON.stringify(state));
+};
+
+const load = (state: PlayerStateModel): void => {
+  const players: string | null = localStorage.getItem('rollDicePlayer');
+  if (players) {
+    state.players = JSON.parse(players)?.players;
+  }
+};
+
 export default {
   [SWAP_FACE]: swapFace,
   [ADD_DICE]: addDice,
@@ -151,4 +164,6 @@ export default {
   [SET_EDITING_NEW_DICE_FACE]: setEditingNewDiceFace,
   [SET_EDITING_NEW_DICE_FACE_POSITION]: setEditingNewDiceFacePosition,
   [SET_CURRENT_PLAYER]: setCurrentPlayer,
+  [SAVE]: save,
+  [LOAD]: load,
 };

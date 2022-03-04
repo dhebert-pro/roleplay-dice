@@ -13,6 +13,8 @@
 import { Options, Vue } from 'vue-class-component';
 
 import IconBase from '@/components/icons/IconBase.vue';
+import { PLAYER_MODULE_NAME } from '@/store/player/store';
+import { LOAD_ACTION } from '@/store/player/types/actionTypes';
 
 @Options({
   props: {},
@@ -20,10 +22,10 @@ import IconBase from '@/components/icons/IconBase.vue';
   methods: {
     loadGame() {
       if (window.confirm('Es-tu sûr?')) {
-        const players: string | null = localStorage.getItem('rollDicePlayer');
-        if (players) {
-          this.$store.state.player = JSON.parse(players);
-        }
+        this.$store.dispatch(`${PLAYER_MODULE_NAME}/${LOAD_ACTION}`, {
+          playerName: this.user,
+          dice: this.newDice,
+        });
       }
     },
   },

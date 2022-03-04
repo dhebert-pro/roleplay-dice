@@ -13,6 +13,8 @@
 import { Options, Vue } from 'vue-class-component';
 
 import IconBase from '@/components/icons/IconBase.vue';
+import { PLAYER_MODULE_NAME } from '@/store/player/store';
+import { SAVE_ACTION } from '@/store/player/types/actionTypes';
 
 @Options({
   props: {},
@@ -20,8 +22,10 @@ import IconBase from '@/components/icons/IconBase.vue';
   methods: {
     saveGame() {
       if (window.confirm('Es-tu sûr?')) {
-        const players = JSON.stringify(this.$store.state.player);
-        localStorage.setItem('rollDicePlayer', players);
+        this.$store.dispatch(`${PLAYER_MODULE_NAME}/${SAVE_ACTION}`, {
+          playerName: this.user,
+          dice: this.newDice,
+        });
       }
     },
   },

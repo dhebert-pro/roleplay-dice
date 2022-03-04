@@ -9,3 +9,5 @@ export const SET_ROLLING = 'setRolling';
 export const SET_EDITING_NEW_DICE_FACE = 'setEditingNewDiceFace';
 export const SET_EDITING_NEW_DICE_FACE_POSITION = 'setEditingNewDiceFacePosition';
 export const SET_CURRENT_PLAYER = 'setCurrentPlayer';
+export const SAVE = 'save';
+export const LOAD = 'load';

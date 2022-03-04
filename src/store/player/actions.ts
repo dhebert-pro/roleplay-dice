@@ -18,6 +18,8 @@ import {
   SWITCH_NEW_DICE_FACE_ACTION,
   ROLL_ACTION,
   SET_CURRENT_PLAYER_ACTION,
+  SAVE_ACTION,
+  LOAD_ACTION,
 } from '@/store/player/types/actionTypes';
 import {
   ADD_DICE,
@@ -31,6 +33,8 @@ import {
   SET_ROLLING,
   SWAP_FACE,
   SWITCH_NEW_DICE_FACE,
+  SAVE,
+  LOAD,
 } from '@/store/player/types/mutationTypes';
 
 const sleep = (delay: number) => new Promise((resolve) => setTimeout(resolve, delay));
@@ -52,7 +56,6 @@ const removeDice = ({ commit }: { commit: Commit }, payload: {
   playerName: string,
   diceId: string
 }): void => {
-  console.log('payload', payload);
   commit(REMOVE_DICE, payload);
 };
 const addNewDice = ({ commit }: { commit: Commit }, payload: {
@@ -126,6 +129,14 @@ const setCurrentPlayer = ({ commit }: { commit: Commit }, payload: {
   commit(SET_CURRENT_PLAYER, payload);
 };
 
+const save = ({ commit }: { commit: Commit }): void => {
+  commit(SAVE);
+};
+
+const load = ({ commit }: { commit: Commit }): void => {
+  commit(LOAD);
+};
+
 export default {
   [SWAP_FACE_ACTION]: swapFace,
   [ADD_DICE_ACTION]: addDice,
@@ -138,4 +149,6 @@ export default {
   [SET_EDITING_NEW_DICE_FACE_POSITION_ACTION]: setEditingNewDiceFacePosition,
   [ROLL_ACTION]: roll,
   [SET_CURRENT_PLAYER_ACTION]: setCurrentPlayer,
+  [SAVE_ACTION]: save,
+  [LOAD_ACTION]: load,
 };
