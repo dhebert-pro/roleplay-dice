@@ -3,7 +3,8 @@
   <div>
     <div class="line" v-for="dice in dices" :key="dice.id">
       <div class="label">{{ dice.label }} :</div>
-      <div class="faces"><Dice :dice="dice" /></div>
+      <div class="faces"><dice :dice="dice" /></div>
+      <div class="actions"><dice-actions :dice="dice" /></div>
     </div>
   </div>
 </template>
@@ -11,6 +12,7 @@
 import { Options, Vue } from 'vue-class-component';
 
 import Dice from '@/components/Dice.vue';
+import DiceActions from '@/components/DiceActions.vue';
 
 @Options({
   props: {
@@ -18,6 +20,7 @@ import Dice from '@/components/Dice.vue';
   },
   components: {
     Dice,
+    DiceActions,
   },
 })
 export default class Dices extends Vue {}
@@ -39,7 +42,14 @@ export default class Dices extends Vue {}
   box-sizing: border-box;
 }
 .faces {
-  flex: 1;
+  flex: 0 0 600px;
   display: flex;
+}
+.actions {
+  margin-left: 20px;
+
+  &:hover > *:not(:hover) {
+    opacity: 0.5;
+  }
 }
 </style>

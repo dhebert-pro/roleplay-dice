@@ -6,14 +6,9 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 
-import Dices from '@/components/Dices.vue';
-
 @Options({
   props: {
     msg: String,
-  },
-  components: {
-    Dices,
   },
 })
 export default class HomeContent extends Vue {
