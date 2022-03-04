@@ -8,6 +8,7 @@ import {
 import { PlayerModel } from '@/models/PlayerModel';
 import {
   ADD_DICE_ACTION,
+  REMOVE_DICE_ACTION,
   ADD_NEW_DICE_ACTION,
   CHANGE_NEW_DICE_NAME_ACTION,
   CLEAR_NEW_DICE_ACTION,
@@ -20,6 +21,7 @@ import {
 } from '@/store/player/types/actionTypes';
 import {
   ADD_DICE,
+  REMOVE_DICE,
   ADD_NEW_DICE,
   CHANGE_DICE_NAME,
   CLEAR_NEW_DICE,
@@ -45,6 +47,13 @@ const addDice = ({ commit }: { commit: Commit }, payload: {
   dice: DiceModel
 }): void => {
   commit(ADD_DICE, payload);
+};
+const removeDice = ({ commit }: { commit: Commit }, payload: {
+  playerName: string,
+  diceId: string
+}): void => {
+  console.log('payload', payload);
+  commit(REMOVE_DICE, payload);
 };
 const addNewDice = ({ commit }: { commit: Commit }, payload: {
   playerName: string,
@@ -120,6 +129,7 @@ const setCurrentPlayer = ({ commit }: { commit: Commit }, payload: {
 export default {
   [SWAP_FACE_ACTION]: swapFace,
   [ADD_DICE_ACTION]: addDice,
+  [REMOVE_DICE_ACTION]: removeDice,
   [ADD_NEW_DICE_ACTION]: addNewDice,
   [CLEAR_NEW_DICE_ACTION]: clearNewDice,
   [SWITCH_NEW_DICE_FACE_ACTION]: switchNewDiceFace,

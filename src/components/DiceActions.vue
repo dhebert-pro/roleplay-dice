@@ -15,14 +15,25 @@ import { Options, Vue } from 'vue-class-component';
 
 import IconBase from '@/components/icons/IconBase.vue';
 import { DiceModel } from '@/models/DiceModel';
+import { PLAYER_MODULE_NAME } from '@/store/player/store';
+import { REMOVE_DICE_ACTION } from '@/store/player/types/actionTypes';
+import { CURRENT_PLAYER } from '@/store/player/types/getterTypes';
 
 @Options({
   props: {
     dice: Object as PropType<DiceModel>,
   },
+  computed: {
+    user() {
+      return this.$store.getters[`${PLAYER_MODULE_NAME}/${CURRENT_PLAYER}`]();
+    },
+  },
   methods: {
     removeDice() {
-      console.log('Dice removed', this.dice.label);
+      this.$store.dispatch(`${PLAYER_MODULE_NAME}/${REMOVE_DICE_ACTION}`, {
+        playerName: this.user,
+        diceId: this.dice.id,
+      });
     },
   },
   components: {

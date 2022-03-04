@@ -7,6 +7,7 @@ import {
 } from '@/store/player/state';
 import {
   ADD_DICE,
+  REMOVE_DICE,
   ADD_NEW_DICE,
   CHANGE_DICE_NAME,
   CLEAR_NEW_DICE,
@@ -36,6 +37,18 @@ const addDice = (state: PlayerStateModel, {
   const player: PlayerModel | undefined = getPlayerByName(state, playerName);
   if (player) {
     player.dices.push(dice);
+  }
+};
+
+const removeDice = (state: PlayerStateModel, {
+  playerName,
+  diceId,
+}: { playerName: string, diceId: string }): void => {
+  const player: PlayerModel | undefined = getPlayerByName(state, playerName);
+  if (player) {
+    const { dices } = player;
+    const indexRemoved = dices.findIndex((dice: DiceModel) => dice.id === diceId);
+    dices.splice(indexRemoved, 1);
   }
 };
 
@@ -129,6 +142,7 @@ const setCurrentPlayer = (state: PlayerStateModel, {
 export default {
   [SWAP_FACE]: swapFace,
   [ADD_DICE]: addDice,
+  [REMOVE_DICE]: removeDice,
   [ADD_NEW_DICE]: addNewDice,
   [CLEAR_NEW_DICE]: clearNewDice,
   [SWITCH_NEW_DICE_FACE]: switchNewDiceFace,

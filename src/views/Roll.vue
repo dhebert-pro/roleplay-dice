@@ -3,12 +3,14 @@
     <h1>{{ firstName }}, tu peux lancer les dés</h1>
     <div v-show="dices?.length">
       <player-dices :dices="dices" :isRolling="isRolling" />
-      <add-dice-button />
-      <transition name="fade">
-        <div v-if="newDice">
-          <add-dice :diceCount="dices?.length || 0" />
-        </div>
-      </transition>
+    </div>
+    <add-dice-button />
+    <transition name="fade">
+      <div v-if="newDice">
+        <add-dice :diceCount="dices?.length || 0" />
+      </div>
+    </transition>
+    <div v-show="dices?.length">
       <dices :dices="dices" />
     </div>
     <p class="warning" v-show="!dices || !dices.length">

@@ -1,5 +1,6 @@
 export const SWAP_FACE = 'swapFace';
 export const ADD_DICE = 'addDice';
+export const REMOVE_DICE = 'removeDice';
 export const ADD_NEW_DICE = 'addNewDice';
 export const CLEAR_NEW_DICE = 'clearNewDice';
 export const SWITCH_NEW_DICE_FACE = 'switchNewDiceFace';
