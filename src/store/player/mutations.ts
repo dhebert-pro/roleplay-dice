@@ -56,12 +56,11 @@ const removeDice = (state: PlayerStateModel, {
 
 const addNewDice = (state: PlayerStateModel, {
   playerName,
-  diceCount,
-}: { playerName: string, diceCount: number }): void => {
+}: { playerName: string }): void => {
   const player: PlayerModel | undefined = getPlayerByName(state, playerName);
   if (player) {
     player.newDice = {
-      id: diceCount.toString(),
+      id: 'TOCHANGE',
       label: '',
       faces: [
         FaceType.BLANK,

@@ -47,9 +47,7 @@ import {
 import { CURRENT_PLAYER, NEW_DICE } from '@/store/player/types/getterTypes';
 
 @Options({
-  props: {
-    diceCount: Number,
-  },
+  props: {},
   data() {
     return {};
   },

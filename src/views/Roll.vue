@@ -7,7 +7,7 @@
     <add-dice-button />
     <transition name="fade">
       <div v-if="newDice">
-        <add-dice :diceCount="dices?.length || 0" />
+        <add-dice />
       </div>
     </transition>
     <div v-show="dices?.length">

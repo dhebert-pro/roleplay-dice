@@ -60,7 +60,6 @@ const removeDice = ({ commit }: { commit: Commit }, payload: {
 };
 const addNewDice = ({ commit }: { commit: Commit }, payload: {
   playerName: string,
-  diceCount: number
 }): void => {
   commit(ADD_NEW_DICE, payload);
 };

@@ -26,7 +26,6 @@ import { CURRENT_PLAYER, DICES } from '@/store/player/types/getterTypes';
     addNewDice() {
       this.$store.dispatch(`${PLAYER_MODULE_NAME}/${ADD_NEW_DICE_ACTION}`, {
         playerName: this.user,
-        diceCount: this.dices?.length || 0,
       });
     },
   },
