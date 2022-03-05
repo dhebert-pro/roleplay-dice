@@ -32,6 +32,7 @@ const getPlayers = (): Array<PlayerModel> => {
             FaceType.BLANK,
             FaceType.BLANK,
           ],
+          active: true,
         },
       ],
     });

@@ -1,7 +1,11 @@
 <template>
   <h3>Dés disponibles</h3>
   <div>
-    <div class="line" v-for="dice in sortedDices" :key="dice.id">
+    <div
+      :class="['line', getActivationClass(dice)]"
+      v-for="dice in sortedDices"
+      :key="dice.id"
+    >
       <div class="label">{{ dice.label }} :</div>
       <div class="faces"><dice :dice="dice" /></div>
       <div class="actions"><dice-actions :dice="dice" /></div>
@@ -32,6 +36,11 @@ import { DiceModel } from '@/models/DiceModel';
       });
     },
   },
+  methods: {
+    getActivationClass(dice: DiceModel) {
+      return dice.active ? '' : 'disabled';
+    },
+  },
   components: {
     Dice,
     DiceActions,
@@ -47,6 +56,11 @@ export default class Dices extends Vue {}
 
   &:not(:first-child) {
     border-top: 1px solid;
+  }
+
+  &.disabled {
+    background-color: #bbb;
+    opacity: 0.5;
   }
 }
 .label {

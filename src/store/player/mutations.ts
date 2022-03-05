@@ -70,6 +70,7 @@ const addNewDice = (state: PlayerStateModel, {
         FaceType.BLANK,
         FaceType.BLANK,
       ],
+      active: true,
     };
   }
 };

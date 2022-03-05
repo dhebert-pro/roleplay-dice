@@ -17,7 +17,8 @@ export interface DiceModel {
   id: string,
   label: string,
   faces: Array<FaceType>,
-  selectedFace?: number
+  selectedFace?: number,
+  active: boolean,
 }
 
 type colors = {
