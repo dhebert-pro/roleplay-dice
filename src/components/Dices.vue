@@ -26,6 +26,12 @@ import { DiceModel } from '@/models/DiceModel';
   computed: {
     sortedDices() {
       return this.dices.sort((dice1: DiceModel, dice2: DiceModel) => {
+        if (dice2.active && !dice1.active) {
+          return 1;
+        }
+        if (dice1.active && !dice2.active) {
+          return -1;
+        }
         if (dice1.label > dice2.label) {
           return 1;
         }
