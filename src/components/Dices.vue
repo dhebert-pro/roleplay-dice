@@ -1,7 +1,7 @@
 <template>
   <h3>Dés disponibles</h3>
   <div>
-    <div class="line" v-for="dice in dices" :key="dice.id">
+    <div class="line" v-for="dice in sortedDices" :key="dice.id">
       <div class="label">{{ dice.label }} :</div>
       <div class="faces"><dice :dice="dice" /></div>
       <div class="actions"><dice-actions :dice="dice" /></div>
@@ -13,10 +13,24 @@ import { Options, Vue } from 'vue-class-component';
 
 import Dice from '@/components/Dice.vue';
 import DiceActions from '@/components/DiceActions.vue';
+import { DiceModel } from '@/models/DiceModel';
 
 @Options({
   props: {
     dices: Array,
+  },
+  computed: {
+    sortedDices() {
+      return this.dices.sort((dice1: DiceModel, dice2: DiceModel) => {
+        if (dice1.label > dice2.label) {
+          return 1;
+        }
+        if (dice2.label > dice1.label) {
+          return -1;
+        }
+        return 0;
+      });
+    },
   },
   components: {
     Dice,
