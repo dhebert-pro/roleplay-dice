@@ -1,13 +1,13 @@
 <template>
-  <div class="actions">
-    <icon-base
-      iconName="icon-cross"
-      class="action"
-      @click="removeDice"
-      height="40"
-      width="40"
-    />
-  </div>
+  <icon-base
+    iconName="icon-cross"
+    class="action"
+    @click="removeDice"
+    height="40"
+    width="40"
+  />
+  <icon-base iconName="icon-active" class="action" height="40" width="40" />
+  <icon-base iconName="icon-inactive" class="action" height="40" width="40" />
 </template>
 <script lang="ts">
 import { PropType } from 'vue';

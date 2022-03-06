@@ -82,7 +82,7 @@ export default class Dices extends Vue {}
 .actions {
   margin-left: 20px;
 
-  &:hover > *:not(:hover) {
+  &:hover > :deep(*:not(:hover)) {
     opacity: 0.5;
   }
 }
