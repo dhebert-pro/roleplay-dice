@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1>{{ firstName }}, tu peux lancer les dés</h1>
-    <div v-show="dices?.length">
-      <player-dices :dices="dices" :isRolling="isRolling" />
+    <div v-show="activeDices?.length">
+      <player-dices :dices="activeDices" :isRolling="isRolling" />
     </div>
     <add-dice-button />
     <transition name="fade">
@@ -32,7 +32,12 @@ import SaveButton from '@/components/SaveButton.vue';
 import { UserModel, getUserById } from '@/models/UserModel';
 import { PLAYER_MODULE_NAME } from '@/store/player/store';
 import { SET_CURRENT_PLAYER_ACTION } from '@/store/player/types/actionTypes';
-import { DICES, IS_ROLLING, NEW_DICE } from '@/store/player/types/getterTypes';
+import {
+  ACTIVE_DICES,
+  DICES,
+  IS_ROLLING,
+  NEW_DICE,
+} from '@/store/player/types/getterTypes';
 
 @Options({
   props: {
@@ -51,6 +56,11 @@ import { DICES, IS_ROLLING, NEW_DICE } from '@/store/player/types/getterTypes';
     },
     dices() {
       return this.$store.getters[`${PLAYER_MODULE_NAME}/${DICES}`](this.user);
+    },
+    activeDices() {
+      return this.$store.getters[`${PLAYER_MODULE_NAME}/${ACTIVE_DICES}`](
+        this.user,
+      );
     },
     newDice() {
       return this.$store.getters[`${PLAYER_MODULE_NAME}/${NEW_DICE}`](
