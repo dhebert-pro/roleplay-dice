@@ -20,6 +20,8 @@ import {
   SET_CURRENT_PLAYER_ACTION,
   SAVE_ACTION,
   LOAD_ACTION,
+  ACTIVATE_DICE_ACTION,
+  DISABLE_DICE_ACTION,
 } from '@/store/player/types/actionTypes';
 import {
   ADD_DICE,
@@ -35,6 +37,8 @@ import {
   SWITCH_NEW_DICE_FACE,
   SAVE,
   LOAD,
+  ACTIVATE_DICE,
+  DISABLE_DICE,
 } from '@/store/player/types/mutationTypes';
 
 const sleep = (delay: number) => new Promise((resolve) => setTimeout(resolve, delay));
@@ -136,6 +140,20 @@ const load = ({ commit }: { commit: Commit }): void => {
   commit(LOAD);
 };
 
+const activateDice = ({ commit }: { commit: Commit }, payload: {
+  playerName: string,
+  diceId: string
+}): void => {
+  commit(ACTIVATE_DICE, payload);
+};
+
+const disableDice = ({ commit }: { commit: Commit }, payload: {
+  playerName: string,
+  diceId: string
+}): void => {
+  commit(DISABLE_DICE, payload);
+};
+
 export default {
   [SWAP_FACE_ACTION]: swapFace,
   [ADD_DICE_ACTION]: addDice,
@@ -150,4 +168,6 @@ export default {
   [SET_CURRENT_PLAYER_ACTION]: setCurrentPlayer,
   [SAVE_ACTION]: save,
   [LOAD_ACTION]: load,
+  [ACTIVATE_DICE_ACTION]: activateDice,
+  [DISABLE_DICE_ACTION]: disableDice,
 };

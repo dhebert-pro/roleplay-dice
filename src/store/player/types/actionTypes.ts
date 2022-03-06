@@ -11,3 +11,5 @@ export const ROLL_ACTION = 'roll';
 export const SET_CURRENT_PLAYER_ACTION = 'setCurrentPlayer';
 export const SAVE_ACTION = 'save';
 export const LOAD_ACTION = 'load';
+export const ACTIVATE_DICE_ACTION = 'activateDice';
+export const DISABLE_DICE_ACTION = 'disableDice';

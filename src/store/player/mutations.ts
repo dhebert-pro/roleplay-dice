@@ -3,7 +3,7 @@ import {
 } from '@/models/DiceModel';
 import { PlayerModel } from '@/models/PlayerModel';
 import {
-  PlayerStateModel, getPlayerByName,
+  PlayerStateModel, getPlayerByName, getDiceByPlayerAndDiceId,
 } from '@/store/player/state';
 import {
   ADD_DICE,
@@ -19,6 +19,8 @@ import {
   SET_CURRENT_PLAYER,
   SAVE,
   LOAD,
+  ACTIVATE_DICE,
+  DISABLE_DICE,
 } from '@/store/player/types/mutationTypes';
 
 const swapFace = (state: PlayerStateModel, {
@@ -152,6 +154,26 @@ const load = (state: PlayerStateModel): void => {
   }
 };
 
+const activateDice = (state: PlayerStateModel, {
+  playerName,
+  diceId,
+}: { playerName: string, diceId: string }): void => {
+  const dice: DiceModel | undefined = getDiceByPlayerAndDiceId(state, playerName, diceId);
+  if (dice) {
+    dice.active = true;
+  }
+};
+
+const disableDice = (state: PlayerStateModel, {
+  playerName,
+  diceId,
+}: { playerName: string, diceId: string }): void => {
+  const dice: DiceModel | undefined = getDiceByPlayerAndDiceId(state, playerName, diceId);
+  if (dice) {
+    dice.active = false;
+  }
+};
+
 export default {
   [SWAP_FACE]: swapFace,
   [ADD_DICE]: addDice,
@@ -166,4 +188,6 @@ export default {
   [SET_CURRENT_PLAYER]: setCurrentPlayer,
   [SAVE]: save,
   [LOAD]: load,
+  [ACTIVATE_DICE]: activateDice,
+  [DISABLE_DICE]: disableDice,
 };

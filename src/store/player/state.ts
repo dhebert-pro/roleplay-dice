@@ -1,5 +1,5 @@
 import users from '@/config/users';
-import { FaceType } from '@/models/DiceModel';
+import { DiceModel, FaceType } from '@/models/DiceModel';
 import { PlayerModel } from '@/models/PlayerModel';
 import { UserModel } from '@/models/UserModel';
 
@@ -12,8 +12,23 @@ export const getPlayerByName = (
   state: PlayerStateModel,
   playerName: string,
 ): PlayerModel | undefined => state.players.find(
-  (player) => player.user === playerName,
+  (player: PlayerModel) => player.user === playerName,
 );
+
+export const getDiceByPlayerAndDiceId = (
+  state: PlayerStateModel,
+  playerName: string,
+  diceId: string,
+): DiceModel | undefined => {
+  const player: PlayerModel | undefined = getPlayerByName(state, playerName);
+  let dice: DiceModel | undefined;
+  if (player) {
+    dice = player.dices.find(
+      (dice: DiceModel) => dice.id === diceId,
+    );
+  }
+  return dice;
+};
 
 const getPlayers = (): Array<PlayerModel> => {
   const players: Array<PlayerModel> = [];

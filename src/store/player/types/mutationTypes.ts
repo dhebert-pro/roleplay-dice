@@ -11,3 +11,5 @@ export const SET_EDITING_NEW_DICE_FACE_POSITION = 'setEditingNewDiceFacePosition
 export const SET_CURRENT_PLAYER = 'setCurrentPlayer';
 export const SAVE = 'save';
 export const LOAD = 'load';
+export const ACTIVATE_DICE = 'activateDice';
+export const DISABLE_DICE = 'disableDice';
