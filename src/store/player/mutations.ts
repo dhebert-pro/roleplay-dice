@@ -21,6 +21,7 @@ import {
   LOAD,
   ACTIVATE_DICE,
   DISABLE_DICE,
+  SET_EDITING_DICE_ID,
 } from '@/store/player/types/mutationTypes';
 import { getUUId } from '@/util/stringUtil';
 
@@ -137,6 +138,15 @@ const setEditingDiceFacePosition = (state: PlayerStateModel, {
     player.editingDiceFacePosition = editingDiceFacePosition;
   }
 };
+const setEditingDiceId = (state: PlayerStateModel, {
+  playerName,
+  editingDiceId,
+}: { playerName: string, editingDiceId: string }): void => {
+  const player: PlayerModel | undefined = getPlayerByName(state, playerName);
+  if (player) {
+    player.editingDiceId = editingDiceId;
+  }
+};
 
 const setCurrentPlayer = (state: PlayerStateModel, {
   currentPlayer,
@@ -186,6 +196,7 @@ export default {
   [SET_ROLLING]: setRolling,
   [SET_EDITING_DICE_FACE]: setEditingDiceFace,
   [SET_EDITING_DICE_FACE_POSITION]: setEditingDiceFacePosition,
+  [SET_EDITING_DICE_ID]: setEditingDiceId,
   [SET_CURRENT_PLAYER]: setCurrentPlayer,
   [SAVE]: save,
   [LOAD]: load,

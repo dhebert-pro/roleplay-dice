@@ -5,4 +5,5 @@ export const NEW_DICE = 'newDice';
 export const IS_ROLLING = 'isRolling';
 export const IS_EDITING_DICE_FACE = 'isEditingDiceFace';
 export const EDITING_DICE_FACE_POSITION = 'editingDiceFacePosition';
+export const EDITING_DICE_ID = 'editingDiceId';
 export const CURRENT_PLAYER = 'currentPlayer';

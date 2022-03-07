@@ -6,5 +6,6 @@ export interface PlayerModel {
   isRolling?: boolean,
   isEditingDiceFace?: boolean,
   editingDiceFacePosition?: number,
+  editingDiceId?: string,
   newDice?: DiceModel
 }

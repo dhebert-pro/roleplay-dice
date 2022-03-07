@@ -22,6 +22,7 @@ import {
   LOAD_ACTION,
   ACTIVATE_DICE_ACTION,
   DISABLE_DICE_ACTION,
+  SET_EDITING_DICE_ID_ACTION,
 } from '@/store/player/types/actionTypes';
 import {
   ADD_DICE,
@@ -32,6 +33,7 @@ import {
   SET_CURRENT_PLAYER,
   SET_EDITING_DICE_FACE,
   SET_EDITING_DICE_FACE_POSITION,
+  SET_EDITING_DICE_ID,
   SET_ROLLING,
   SWAP_FACE,
   SWITCH_DICE_FACE,
@@ -96,6 +98,12 @@ const setEditingDiceFacePosition = ({ commit }: { commit: Commit }, payload: {
   editingDiceFacePosition: number
 }): void => {
   commit(SET_EDITING_DICE_FACE_POSITION, payload);
+};
+const setEditingDiceId = ({ commit }: { commit: Commit }, payload: {
+  playerName: string,
+  editingDiceId: string
+}): void => {
+  commit(SET_EDITING_DICE_ID, payload);
 };
 const roll = async ({
   commit, getters,
@@ -164,6 +172,7 @@ export default {
   [CHANGE_NEW_DICE_NAME_ACTION]: changeNewDiceName,
   [SET_EDITING_DICE_FACE_ACTION]: setEditingDiceFace,
   [SET_EDITING_DICE_FACE_POSITION_ACTION]: setEditingDiceFacePosition,
+  [SET_EDITING_DICE_ID_ACTION]: setEditingDiceId,
   [ROLL_ACTION]: roll,
   [SET_CURRENT_PLAYER_ACTION]: setCurrentPlayer,
   [SAVE_ACTION]: save,

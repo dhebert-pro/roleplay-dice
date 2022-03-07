@@ -7,6 +7,7 @@ export const SWITCH_DICE_FACE_ACTION = 'switchDiceFace';
 export const CHANGE_NEW_DICE_NAME_ACTION = 'changeNewDiceName';
 export const SET_EDITING_DICE_FACE_ACTION = 'setEditingDiceFace';
 export const SET_EDITING_DICE_FACE_POSITION_ACTION = 'setEditingDiceFacePosition';
+export const SET_EDITING_DICE_ID_ACTION = 'setEditingDiceId';
 export const ROLL_ACTION = 'roll';
 export const SET_CURRENT_PLAYER_ACTION = 'setCurrentPlayer';
 export const SAVE_ACTION = 'save';

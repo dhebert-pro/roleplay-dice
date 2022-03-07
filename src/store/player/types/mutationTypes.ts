@@ -8,6 +8,7 @@ export const CHANGE_DICE_NAME = 'changeNewDiceName';
 export const SET_ROLLING = 'setRolling';
 export const SET_EDITING_DICE_FACE = 'setEditingDiceFace';
 export const SET_EDITING_DICE_FACE_POSITION = 'setEditingDiceFacePosition';
+export const SET_EDITING_DICE_ID = 'setEditingDiceId';
 export const SET_CURRENT_PLAYER = 'setCurrentPlayer';
 export const SAVE = 'save';
 export const LOAD = 'load';

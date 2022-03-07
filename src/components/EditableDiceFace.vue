@@ -1,5 +1,11 @@
 <template>
-  <div v-show="isEditingDiceFace && position === editingDiceFacePosition">
+  <div
+    v-show="
+      isEditingDiceFace &&
+      position === editingDiceFacePosition &&
+      diceId === editingDiceId
+    "
+  >
     <div class="modal" @click.prevent="closeModal">
       <div style="height: 100%"></div>
     </div>
@@ -22,10 +28,12 @@ import { PLAYER_MODULE_NAME } from '@/store/player/store';
 import {
   SET_EDITING_DICE_FACE_ACTION,
   SET_EDITING_DICE_FACE_POSITION_ACTION,
+  SET_EDITING_DICE_ID_ACTION,
 } from '@/store/player/types/actionTypes';
 import {
   CURRENT_PLAYER,
   EDITING_DICE_FACE_POSITION,
+  EDITING_DICE_ID,
   IS_EDITING_DICE_FACE,
 } from '@/store/player/types/getterTypes';
 
@@ -34,6 +42,7 @@ import {
     color: Array,
     value: FaceType,
     position: Number,
+    diceId: String,
   },
   data() {
     return {};
@@ -52,6 +61,11 @@ import {
         `${PLAYER_MODULE_NAME}/${EDITING_DICE_FACE_POSITION}`
       ](this.user);
     },
+    editingDiceId() {
+      return this.$store.getters[`${PLAYER_MODULE_NAME}/${EDITING_DICE_ID}`](
+        this.user,
+      );
+    },
   },
   methods: {
     closeModal() {
@@ -69,6 +83,13 @@ import {
           editingDiceFacePosition: undefined,
         },
       );
+      this.$store.dispatch(
+        `${PLAYER_MODULE_NAME}/${SET_EDITING_DICE_ID_ACTION}`,
+        {
+          playerName: this.user,
+          editingDiceId: undefined,
+        },
+      );
     },
     openModal() {
       this.$store.dispatch(
@@ -83,6 +104,13 @@ import {
         {
           playerName: this.user,
           editingDiceFacePosition: this.position,
+        },
+      );
+      this.$store.dispatch(
+        `${PLAYER_MODULE_NAME}/${SET_EDITING_DICE_ID_ACTION}`,
+        {
+          playerName: this.user,
+          editingDiceId: this.diceId,
         },
       );
     },
