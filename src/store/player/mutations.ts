@@ -91,11 +91,21 @@ const clearNewDice = (state: PlayerStateModel, {
 const switchDiceFace = (state: PlayerStateModel, {
   playerName,
   position,
+  diceId,
   faceName,
-}: { playerName: string, position: number, faceName: FaceType }): void => {
-  const player: PlayerModel | undefined = getPlayerByName(state, playerName);
-  if (player && player.newDice) {
-    player.newDice.faces[position] = faceName;
+}: { playerName: string, position: number, diceId: string, faceName: FaceType }): void => {
+  if (diceId) {
+    const dice: DiceModel | undefined = getDiceByPlayerAndDiceId(state, playerName, diceId);
+    if (dice) {
+      dice.faces[position] = faceName;
+    }
+  } else {
+    const player: PlayerModel | undefined = getPlayerByName(state, playerName);
+    if (player && player.newDice) {
+      if (player.newDice && !diceId) {
+        player.newDice.faces[position] = faceName;
+      }
+    }
   }
 };
 

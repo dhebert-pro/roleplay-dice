@@ -91,6 +91,7 @@ import { PLAYER_MODULE_NAME } from '@/store/player/store';
 import {
   SET_EDITING_DICE_FACE_ACTION,
   SET_EDITING_DICE_FACE_POSITION_ACTION,
+  SET_EDITING_DICE_ID_ACTION,
   SWITCH_DICE_FACE_ACTION,
 } from '@/store/player/types/actionTypes';
 import { CURRENT_PLAYER } from '@/store/player/types/getterTypes';
@@ -99,6 +100,7 @@ import { CURRENT_PLAYER } from '@/store/player/types/getterTypes';
   props: {
     color: Array,
     position: Number,
+    diceId: String,
   },
   data() {
     return {
@@ -115,6 +117,7 @@ import { CURRENT_PLAYER } from '@/store/player/types/getterTypes';
       this.$store.dispatch(`${PLAYER_MODULE_NAME}/${SWITCH_DICE_FACE_ACTION}`, {
         playerName: this.user,
         position: this.position,
+        diceId: this.diceId,
         faceName,
       });
       this.$store.dispatch(
@@ -129,6 +132,13 @@ import { CURRENT_PLAYER } from '@/store/player/types/getterTypes';
         {
           playerName: this.user,
           editingDiceFacePosition: undefined,
+        },
+      );
+      this.$store.dispatch(
+        `${PLAYER_MODULE_NAME}/${SET_EDITING_DICE_ID_ACTION}`,
+        {
+          playerName: this.user,
+          editingDiceId: undefined,
         },
       );
     },

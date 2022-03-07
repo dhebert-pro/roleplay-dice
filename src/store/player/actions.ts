@@ -77,6 +77,7 @@ const clearNewDice = ({ commit }: { commit: Commit }, payload: {
 const switchDiceFace = ({ commit }: { commit: Commit }, payload: {
   playerName: string,
   position: number,
+  diceId: string,
   faceName: FaceType
 }): void => {
   commit(SWITCH_DICE_FACE, payload);

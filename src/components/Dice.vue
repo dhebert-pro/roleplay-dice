@@ -1,13 +1,18 @@
 <template>
   <div class="container" v-for="(face, index) in dice?.faces" :key="index">
-    <dice-face :color="color" :value="face" />
+    <editable-dice-face
+      :diceId="dice.id"
+      :position="index"
+      :color="color"
+      :value="face"
+    />
   </div>
 </template>
 <script lang="ts">
 import { PropType } from 'vue';
 import { Options, Vue } from 'vue-class-component';
 
-import DiceFace from '@/components/DiceFace.vue';
+import EditableDiceFace from '@/components/EditableDiceFace.vue';
 import { DiceModel, getColorFromDice } from '@/models/DiceModel';
 
 @Options({
@@ -20,7 +25,7 @@ import { DiceModel, getColorFromDice } from '@/models/DiceModel';
     },
   },
   components: {
-    DiceFace,
+    EditableDiceFace,
   },
 })
 export default class Dice extends Vue {}

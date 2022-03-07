@@ -9,7 +9,7 @@
     <div class="modal" @click.prevent="closeModal">
       <div style="height: 100%"></div>
     </div>
-    <dice-selection :color="color" :position="position" />
+    <dice-selection :color="color" :position="position" :diceId="diceId" />
   </div>
   <dice-face
     class="dice"
