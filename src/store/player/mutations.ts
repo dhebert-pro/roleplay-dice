@@ -22,6 +22,7 @@ import {
   ACTIVATE_DICE,
   DISABLE_DICE,
 } from '@/store/player/types/mutationTypes';
+import { getUUId } from '@/util/stringUtil';
 
 const swapFace = (state: PlayerStateModel, {
   position,
@@ -62,7 +63,7 @@ const addNewDice = (state: PlayerStateModel, {
   const player: PlayerModel | undefined = getPlayerByName(state, playerName);
   if (player) {
     player.newDice = {
-      id: 'TOCHANGE',
+      id: getUUId(),
       label: '',
       faces: [
         FaceType.BLANK,

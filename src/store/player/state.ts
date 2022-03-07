@@ -2,6 +2,7 @@ import users from '@/config/users';
 import { DiceModel, FaceType } from '@/models/DiceModel';
 import { PlayerModel } from '@/models/PlayerModel';
 import { UserModel } from '@/models/UserModel';
+import { getUUId } from '@/util/stringUtil';
 
 export interface PlayerStateModel {
   currentPlayer: string,
@@ -37,7 +38,7 @@ const getPlayers = (): Array<PlayerModel> => {
       user: user.id,
       dices: [
         {
-          id: '0',
+          id: getUUId(),
           label: 'Départ',
           faces: [
             FaceType.ATTACK,

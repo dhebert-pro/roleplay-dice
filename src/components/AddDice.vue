@@ -61,11 +61,9 @@ import { CURRENT_PLAYER, NEW_DICE } from '@/store/player/types/getterTypes';
   },
   methods: {
     submitOnButton() {
-      console.log('submitOnForm');
       this.$refs.diceForm.submit();
     },
     addDice() {
-      console.log('Add DICE');
       this.$store.dispatch(`${PLAYER_MODULE_NAME}/${ADD_DICE_ACTION}`, {
         playerName: this.user,
         dice: this.newDice,
