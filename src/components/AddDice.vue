@@ -1,27 +1,21 @@
 <template>
   <h3>Ajouter un dé</h3>
-  <div class="line">
-    <form @submit.prevent="addDice" ref="diceForm">
-      <input
-        ref="diceName"
-        type="text"
-        class="diceName"
-        :value="diceName"
-        placeholder="Nom de l'objet"
-        required
-        @input="changeDiceName"
-      />
-    </form>
+  <form class="line" @submit.prevent="addDice" ref="diceForm">
+    <input
+      ref="diceName"
+      type="text"
+      class="diceName"
+      :value="diceName"
+      placeholder="Nom de l'objet"
+      required
+      @input="changeDiceName"
+    />
     <div class="faces">
       <new-dice :dice="newDice" />
       <div class="actions">
-        <icon-base
-          iconName="icon-check"
-          class="action"
-          @click.prevent="submitOnButton"
-          height="40"
-          width="40"
-        />
+        <button type="submit" class="action button">
+          <icon-base iconName="icon-check" height="40" width="40" />
+        </button>
         <icon-base
           iconName="icon-cross"
           class="action"
@@ -31,7 +25,7 @@
         />
       </div>
     </div>
-  </div>
+  </form>
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
@@ -128,6 +122,11 @@ export default class AddDice extends Vue {}
   &:hover {
     transform: scale(1.4);
   }
+}
+
+.button {
+  border: 0;
+  background: none;
 }
 
 .actions {
