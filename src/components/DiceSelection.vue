@@ -89,9 +89,9 @@ import DiceFace from '@/components/DiceFace.vue';
 import { FaceType } from '@/models/DiceModel';
 import { PLAYER_MODULE_NAME } from '@/store/player/store';
 import {
-  SET_EDITING_NEW_DICE_FACE_ACTION,
-  SET_EDITING_NEW_DICE_FACE_POSITION_ACTION,
-  SWITCH_NEW_DICE_FACE_ACTION,
+  SET_EDITING_DICE_FACE_ACTION,
+  SET_EDITING_DICE_FACE_POSITION_ACTION,
+  SWITCH_DICE_FACE_ACTION,
 } from '@/store/player/types/actionTypes';
 import { CURRENT_PLAYER } from '@/store/player/types/getterTypes';
 
@@ -112,26 +112,23 @@ import { CURRENT_PLAYER } from '@/store/player/types/getterTypes';
   },
   methods: {
     addFace(faceName: FaceType) {
+      this.$store.dispatch(`${PLAYER_MODULE_NAME}/${SWITCH_DICE_FACE_ACTION}`, {
+        playerName: this.user,
+        position: this.position,
+        faceName,
+      });
       this.$store.dispatch(
-        `${PLAYER_MODULE_NAME}/${SWITCH_NEW_DICE_FACE_ACTION}`,
+        `${PLAYER_MODULE_NAME}/${SET_EDITING_DICE_FACE_ACTION}`,
         {
           playerName: this.user,
-          position: this.position,
-          faceName,
+          isEditingDiceFace: false,
         },
       );
       this.$store.dispatch(
-        `${PLAYER_MODULE_NAME}/${SET_EDITING_NEW_DICE_FACE_ACTION}`,
+        `${PLAYER_MODULE_NAME}/${SET_EDITING_DICE_FACE_POSITION_ACTION}`,
         {
           playerName: this.user,
-          isEditingNewDiceFace: false,
-        },
-      );
-      this.$store.dispatch(
-        `${PLAYER_MODULE_NAME}/${SET_EDITING_NEW_DICE_FACE_POSITION_ACTION}`,
-        {
-          playerName: this.user,
-          editingNewDiceFacePosition: undefined,
+          editingDiceFacePosition: undefined,
         },
       );
     },

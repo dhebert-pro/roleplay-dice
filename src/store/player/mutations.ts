@@ -11,11 +11,11 @@ import {
   ADD_NEW_DICE,
   CHANGE_DICE_NAME,
   CLEAR_NEW_DICE,
-  SET_EDITING_NEW_DICE_FACE,
-  SET_EDITING_NEW_DICE_FACE_POSITION,
+  SET_EDITING_DICE_FACE,
+  SET_EDITING_DICE_FACE_POSITION,
   SET_ROLLING,
   SWAP_FACE,
-  SWITCH_NEW_DICE_FACE,
+  SWITCH_DICE_FACE,
   SET_CURRENT_PLAYER,
   SAVE,
   LOAD,
@@ -87,7 +87,7 @@ const clearNewDice = (state: PlayerStateModel, {
   }
 };
 
-const switchNewDiceFace = (state: PlayerStateModel, {
+const switchDiceFace = (state: PlayerStateModel, {
   playerName,
   position,
   faceName,
@@ -118,23 +118,23 @@ const setRolling = (state: PlayerStateModel, {
   }
 };
 
-const setEditingNewDiceFace = (state: PlayerStateModel, {
+const setEditingDiceFace = (state: PlayerStateModel, {
   playerName,
-  isEditingNewDiceFace,
-}: { playerName: string, isEditingNewDiceFace: boolean }): void => {
+  isEditingDiceFace,
+}: { playerName: string, isEditingDiceFace: boolean }): void => {
   const player: PlayerModel | undefined = getPlayerByName(state, playerName);
   if (player) {
-    player.isEditingNewDiceFace = isEditingNewDiceFace;
+    player.isEditingDiceFace = isEditingDiceFace;
   }
 };
 
-const setEditingNewDiceFacePosition = (state: PlayerStateModel, {
+const setEditingDiceFacePosition = (state: PlayerStateModel, {
   playerName,
-  editingNewDiceFacePosition,
-}: { playerName: string, editingNewDiceFacePosition: number }): void => {
+  editingDiceFacePosition,
+}: { playerName: string, editingDiceFacePosition: number }): void => {
   const player: PlayerModel | undefined = getPlayerByName(state, playerName);
   if (player) {
-    player.editingNewDiceFacePosition = editingNewDiceFacePosition;
+    player.editingDiceFacePosition = editingDiceFacePosition;
   }
 };
 
@@ -181,11 +181,11 @@ export default {
   [REMOVE_DICE]: removeDice,
   [ADD_NEW_DICE]: addNewDice,
   [CLEAR_NEW_DICE]: clearNewDice,
-  [SWITCH_NEW_DICE_FACE]: switchNewDiceFace,
+  [SWITCH_DICE_FACE]: switchDiceFace,
   [CHANGE_DICE_NAME]: changeNewDiceName,
   [SET_ROLLING]: setRolling,
-  [SET_EDITING_NEW_DICE_FACE]: setEditingNewDiceFace,
-  [SET_EDITING_NEW_DICE_FACE_POSITION]: setEditingNewDiceFacePosition,
+  [SET_EDITING_DICE_FACE]: setEditingDiceFace,
+  [SET_EDITING_DICE_FACE_POSITION]: setEditingDiceFacePosition,
   [SET_CURRENT_PLAYER]: setCurrentPlayer,
   [SAVE]: save,
   [LOAD]: load,

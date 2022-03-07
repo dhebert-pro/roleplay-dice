@@ -6,8 +6,8 @@ import {
   DICES,
   NEW_DICE,
   IS_ROLLING,
-  IS_EDITING_NEW_DICE_FACE,
-  EDITING_NEW_DICE_FACE_POSITION,
+  IS_EDITING_DICE_FACE,
+  EDITING_DICE_FACE_POSITION,
   CURRENT_PLAYER,
   ACTIVE_DICES,
 } from '@/store/player/types/getterTypes';
@@ -18,8 +18,8 @@ export interface PlayerGettersModel {
   [ACTIVE_DICES]: (_: string) => Array<DiceModel>,
   [NEW_DICE]: (_: string) => DiceModel | undefined,
   [IS_ROLLING]: (_: string) => boolean,
-  [IS_EDITING_NEW_DICE_FACE]: (_: string) => boolean,
-  [EDITING_NEW_DICE_FACE_POSITION]: (_: string) => number | undefined,
+  [IS_EDITING_DICE_FACE]: (_: string) => boolean,
+  [EDITING_DICE_FACE_POSITION]: (_: string) => number | undefined,
   [CURRENT_PLAYER]: (_: string) => string | undefined
 }
 
@@ -48,16 +48,16 @@ const isRolling = (_state: PlayerStateModel, getters: PlayerGettersModel) => (
   playerName: string,
 ): boolean => !!getters.player(playerName)?.isRolling;
 
-const isEditingNewDiceFace = (_state: PlayerStateModel, getters: PlayerGettersModel) => (
+const isEditingDiceFace = (_state: PlayerStateModel, getters: PlayerGettersModel) => (
   playerName: string,
-): boolean => !!getters.player(playerName)?.isEditingNewDiceFace;
+): boolean => !!getters.player(playerName)?.isEditingDiceFace;
 
-const getEditingNewDiceFacePosition = (
+const getEditingDiceFacePosition = (
   _state: PlayerStateModel,
   getters: PlayerGettersModel,
 ) => (
   playerName: string,
-  ): number | undefined => getters.player(playerName)?.editingNewDiceFacePosition;
+  ): number | undefined => getters.player(playerName)?.editingDiceFacePosition;
 
 export default {
   [PLAYER]: getPlayer,
@@ -65,7 +65,7 @@ export default {
   [ACTIVE_DICES]: getActiveDices,
   [NEW_DICE]: getNewDice,
   [IS_ROLLING]: isRolling,
-  [IS_EDITING_NEW_DICE_FACE]: isEditingNewDiceFace,
-  [EDITING_NEW_DICE_FACE_POSITION]: getEditingNewDiceFacePosition,
+  [IS_EDITING_DICE_FACE]: isEditingDiceFace,
+  [EDITING_DICE_FACE_POSITION]: getEditingDiceFacePosition,
   [CURRENT_PLAYER]: getCurrentPlayer,
 };

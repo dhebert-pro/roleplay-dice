@@ -1,5 +1,5 @@
 <template>
-  <div v-show="isEditingNewDiceFace && position === editingNewDiceFacePosition">
+  <div v-show="isEditingDiceFace && position === editingDiceFacePosition">
     <div class="modal" @click.prevent="closeModal">
       <div style="height: 100%"></div>
     </div>
@@ -20,13 +20,13 @@ import DiceSelection from '@/components/DiceSelection.vue';
 import { FaceType } from '@/models/DiceModel';
 import { PLAYER_MODULE_NAME } from '@/store/player/store';
 import {
-  SET_EDITING_NEW_DICE_FACE_ACTION,
-  SET_EDITING_NEW_DICE_FACE_POSITION_ACTION,
+  SET_EDITING_DICE_FACE_ACTION,
+  SET_EDITING_DICE_FACE_POSITION_ACTION,
 } from '@/store/player/types/actionTypes';
 import {
   CURRENT_PLAYER,
-  EDITING_NEW_DICE_FACE_POSITION,
-  IS_EDITING_NEW_DICE_FACE,
+  EDITING_DICE_FACE_POSITION,
+  IS_EDITING_DICE_FACE,
 } from '@/store/player/types/getterTypes';
 
 @Options({
@@ -42,47 +42,47 @@ import {
     user() {
       return this.$store.getters[`${PLAYER_MODULE_NAME}/${CURRENT_PLAYER}`]();
     },
-    isEditingNewDiceFace() {
+    isEditingDiceFace() {
       return this.$store.getters[
-        `${PLAYER_MODULE_NAME}/${IS_EDITING_NEW_DICE_FACE}`
+        `${PLAYER_MODULE_NAME}/${IS_EDITING_DICE_FACE}`
       ](this.user);
     },
-    editingNewDiceFacePosition() {
+    editingDiceFacePosition() {
       return this.$store.getters[
-        `${PLAYER_MODULE_NAME}/${EDITING_NEW_DICE_FACE_POSITION}`
+        `${PLAYER_MODULE_NAME}/${EDITING_DICE_FACE_POSITION}`
       ](this.user);
     },
   },
   methods: {
     closeModal() {
       this.$store.dispatch(
-        `${PLAYER_MODULE_NAME}/${SET_EDITING_NEW_DICE_FACE_ACTION}`,
+        `${PLAYER_MODULE_NAME}/${SET_EDITING_DICE_FACE_ACTION}`,
         {
           playerName: this.user,
-          isEditingNewDiceFace: false,
+          isEditingDiceFace: false,
         },
       );
       this.$store.dispatch(
-        `${PLAYER_MODULE_NAME}/${SET_EDITING_NEW_DICE_FACE_POSITION_ACTION}`,
+        `${PLAYER_MODULE_NAME}/${SET_EDITING_DICE_FACE_POSITION_ACTION}`,
         {
           playerName: this.user,
-          editingNewDiceFacePosition: undefined,
+          editingDiceFacePosition: undefined,
         },
       );
     },
     openModal() {
       this.$store.dispatch(
-        `${PLAYER_MODULE_NAME}/${SET_EDITING_NEW_DICE_FACE_ACTION}`,
+        `${PLAYER_MODULE_NAME}/${SET_EDITING_DICE_FACE_ACTION}`,
         {
           playerName: this.user,
-          isEditingNewDiceFace: true,
+          isEditingDiceFace: true,
         },
       );
       this.$store.dispatch(
-        `${PLAYER_MODULE_NAME}/${SET_EDITING_NEW_DICE_FACE_POSITION_ACTION}`,
+        `${PLAYER_MODULE_NAME}/${SET_EDITING_DICE_FACE_POSITION_ACTION}`,
         {
           playerName: this.user,
-          editingNewDiceFacePosition: this.position,
+          editingDiceFacePosition: this.position,
         },
       );
     },
@@ -92,7 +92,7 @@ import {
     DiceSelection,
   },
 })
-export default class NewDiceFace extends Vue {}
+export default class EditableDiceFace extends Vue {}
 </script>
 <style scoped>
 .modal {

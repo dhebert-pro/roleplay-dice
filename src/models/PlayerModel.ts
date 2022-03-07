@@ -4,7 +4,7 @@ export interface PlayerModel {
   user: string,
   dices: Array<DiceModel>,
   isRolling?: boolean,
-  isEditingNewDiceFace?: boolean,
-  editingNewDiceFacePosition?: number,
+  isEditingDiceFace?: boolean,
+  editingDiceFacePosition?: number,
   newDice?: DiceModel
 }

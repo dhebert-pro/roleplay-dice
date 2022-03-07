@@ -12,10 +12,10 @@ import {
   ADD_NEW_DICE_ACTION,
   CHANGE_NEW_DICE_NAME_ACTION,
   CLEAR_NEW_DICE_ACTION,
-  SET_EDITING_NEW_DICE_FACE_ACTION,
-  SET_EDITING_NEW_DICE_FACE_POSITION_ACTION,
+  SET_EDITING_DICE_FACE_ACTION,
+  SET_EDITING_DICE_FACE_POSITION_ACTION,
   SWAP_FACE_ACTION,
-  SWITCH_NEW_DICE_FACE_ACTION,
+  SWITCH_DICE_FACE_ACTION,
   ROLL_ACTION,
   SET_CURRENT_PLAYER_ACTION,
   SAVE_ACTION,
@@ -30,11 +30,11 @@ import {
   CHANGE_DICE_NAME,
   CLEAR_NEW_DICE,
   SET_CURRENT_PLAYER,
-  SET_EDITING_NEW_DICE_FACE,
-  SET_EDITING_NEW_DICE_FACE_POSITION,
+  SET_EDITING_DICE_FACE,
+  SET_EDITING_DICE_FACE_POSITION,
   SET_ROLLING,
   SWAP_FACE,
-  SWITCH_NEW_DICE_FACE,
+  SWITCH_DICE_FACE,
   SAVE,
   LOAD,
   ACTIVATE_DICE,
@@ -72,12 +72,12 @@ const clearNewDice = ({ commit }: { commit: Commit }, payload: {
 }): void => {
   commit(CLEAR_NEW_DICE, payload);
 };
-const switchNewDiceFace = ({ commit }: { commit: Commit }, payload: {
+const switchDiceFace = ({ commit }: { commit: Commit }, payload: {
   playerName: string,
   position: number,
   faceName: FaceType
 }): void => {
-  commit(SWITCH_NEW_DICE_FACE, payload);
+  commit(SWITCH_DICE_FACE, payload);
 };
 const changeNewDiceName = ({ commit }: { commit: Commit }, payload: {
   playerName: string,
@@ -85,17 +85,17 @@ const changeNewDiceName = ({ commit }: { commit: Commit }, payload: {
 }): void => {
   commit(CHANGE_DICE_NAME, payload);
 };
-const setEditingNewDiceFace = ({ commit }: { commit: Commit }, payload: {
+const setEditingDiceFace = ({ commit }: { commit: Commit }, payload: {
   playerName: string,
-  isEditingNewDiceFace: boolean
+  isEditingDiceFace: boolean
 }): void => {
-  commit(SET_EDITING_NEW_DICE_FACE, payload);
+  commit(SET_EDITING_DICE_FACE, payload);
 };
-const setEditingNewDiceFacePosition = ({ commit }: { commit: Commit }, payload: {
+const setEditingDiceFacePosition = ({ commit }: { commit: Commit }, payload: {
   playerName: string,
-  editingNewDiceFacePosition: number
+  editingDiceFacePosition: number
 }): void => {
-  commit(SET_EDITING_NEW_DICE_FACE_POSITION, payload);
+  commit(SET_EDITING_DICE_FACE_POSITION, payload);
 };
 const roll = async ({
   commit, getters,
@@ -160,10 +160,10 @@ export default {
   [REMOVE_DICE_ACTION]: removeDice,
   [ADD_NEW_DICE_ACTION]: addNewDice,
   [CLEAR_NEW_DICE_ACTION]: clearNewDice,
-  [SWITCH_NEW_DICE_FACE_ACTION]: switchNewDiceFace,
+  [SWITCH_DICE_FACE_ACTION]: switchDiceFace,
   [CHANGE_NEW_DICE_NAME_ACTION]: changeNewDiceName,
-  [SET_EDITING_NEW_DICE_FACE_ACTION]: setEditingNewDiceFace,
-  [SET_EDITING_NEW_DICE_FACE_POSITION_ACTION]: setEditingNewDiceFacePosition,
+  [SET_EDITING_DICE_FACE_ACTION]: setEditingDiceFace,
+  [SET_EDITING_DICE_FACE_POSITION_ACTION]: setEditingDiceFacePosition,
   [ROLL_ACTION]: roll,
   [SET_CURRENT_PLAYER_ACTION]: setCurrentPlayer,
   [SAVE_ACTION]: save,
