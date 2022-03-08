@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
+import Fight from '@/views/Fight.vue';
 import Home from '@/views/Home.vue';
+import Roll from '@/views/Roll.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -11,7 +13,13 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/roll/:user',
     name: 'Roll',
-    component: () => import('@/views/Roll.vue'),
+    component: Roll,
+    props: true,
+  },
+  {
+    path: '/fight',
+    name: 'Fight',
+    component: Fight,
     props: true,
   },
 ];

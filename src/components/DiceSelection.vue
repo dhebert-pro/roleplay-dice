@@ -56,6 +56,32 @@
       <div class="line">
         <dice-face
           class="dice"
+          @click="addFace(FaceType.INTELLIGENCE)"
+          :color="color"
+          :value="FaceType.INTELLIGENCE"
+        />
+        <dice-face
+          class="dice"
+          @click="addFace(FaceType.PERCEPTION)"
+          :color="color"
+          :value="FaceType.PERCEPTION"
+        />
+        <dice-face
+          class="dice"
+          @click="addFace(FaceType.NATURE)"
+          :color="color"
+          :value="FaceType.NATURE"
+        />
+        <dice-face
+          class="dice"
+          @click="addFace(FaceType.CHARISMA)"
+          :color="color"
+          :value="FaceType.CHARISMA"
+        />
+      </div>
+      <div class="line">
+        <dice-face
+          class="dice"
           @click="addFace(FaceType.STEAL)"
           :color="color"
           :value="FaceType.STEAL"
@@ -156,7 +182,7 @@ export default class DiceSelection extends Vue {}
   background-color: #ffffff;
   border-radius: 10px;
   padding: 30px;
-  margin-top: -350px;
+  margin-top: 100px;
 }
 .container {
   display: flex;

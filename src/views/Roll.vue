@@ -1,24 +1,22 @@
 <template>
-  <div>
-    <h1>{{ firstName }}, tu peux lancer les dés</h1>
-    <div v-show="activeDices?.length">
-      <player-dices :dices="activeDices" :isRolling="isRolling" />
-    </div>
-    <add-dice-button />
-    <transition name="fade">
-      <div v-if="newDice">
-        <add-dice />
-      </div>
-    </transition>
-    <div v-show="dices?.length">
-      <dices :dices="dices" />
-    </div>
-    <p class="warning" v-show="!dices || !dices.length">
-      Aucun dé n'a été trouvé
-    </p>
-    <save-button />
-    <load-button />
+  <h1>{{ firstName }}, tu peux lancer les dés</h1>
+  <div v-show="activeDices?.length">
+    <player-dices :dices="activeDices" :isRolling="isRolling" />
   </div>
+  <add-dice-button />
+  <transition name="fade">
+    <div v-if="newDice">
+      <add-dice />
+    </div>
+  </transition>
+  <div v-show="dices?.length">
+    <dices :dices="dices" />
+  </div>
+  <p class="warning" v-show="!dices || !dices.length">
+    Aucun dé n'a été trouvé
+  </p>
+  <save-button />
+  <load-button />
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';

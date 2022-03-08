@@ -1,8 +1,12 @@
 import IconBow from '@/components/icons/faces/IconBow.vue';
+import IconBrain from '@/components/icons/faces/IconBrain.vue';
+import IconEye from '@/components/icons/faces/IconEye.vue';
 import IconFootprints from '@/components/icons/faces/IconFootprints.vue';
 import IconGears from '@/components/icons/faces/IconGears.vue';
 import IconHeart from '@/components/icons/faces/IconHeart.vue';
+import IconLeaf from '@/components/icons/faces/IconLeaf.vue';
 import IconMask from '@/components/icons/faces/IconMask.vue';
+import IconMouth from '@/components/icons/faces/IconMouth.vue';
 import IconPotion from '@/components/icons/faces/IconPotion.vue';
 import IconShield from '@/components/icons/faces/IconShield.vue';
 import IconSpear from '@/components/icons/faces/IconSpear.vue';
@@ -22,4 +26,8 @@ export default {
   IconSword,
   IconTrap,
   IconWand,
+  IconBrain,
+  IconEye,
+  IconLeaf,
+  IconMouth,
 };

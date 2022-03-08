@@ -10,6 +10,10 @@ export enum FaceType {
   POTION,
   MOVE,
   TRAP,
+  INTELLIGENCE,
+  PERCEPTION,
+  NATURE,
+  CHARISMA,
   BLANK,
 }
 
@@ -29,16 +33,20 @@ export const getColorFromDice = (dice: DiceModel): Array<number> => {
   const arrayColors: colors = {
     [FaceType.ATTACK]: [255, 0, 0],
     [FaceType.DEFENSE]: [0, 0, 255],
-    [FaceType.TRAP]: [170, 85, 0],
+    [FaceType.TRAP]: [101, 67, 33],
     [FaceType.BLANK]: [255, 255, 255],
-    [FaceType.MAGIC]: [0, 255, 0],
-    [FaceType.RANGE]: [0, 170, 85],
-    [FaceType.DISTANCE]: [85, 0, 170],
+    [FaceType.MAGIC]: [255, 0, 255],
+    [FaceType.RANGE]: [170, 103, 57],
+    [FaceType.DISTANCE]: [0, 255, 255],
     [FaceType.MECHANIC]: [85, 85, 85],
-    [FaceType.HEAL]: [170, 0, 85],
-    [FaceType.STEAL]: [0, 85, 170],
-    [FaceType.POTION]: [85, 170, 0],
-    [FaceType.MOVE]: [0, 0, 0],
+    [FaceType.HEAL]: [253, 108, 158],
+    [FaceType.STEAL]: [0, 0, 0],
+    [FaceType.POTION]: [128, 64, 192],
+    [FaceType.INTELLIGENCE]: [255, 255, 0],
+    [FaceType.PERCEPTION]: [158, 253, 56],
+    [FaceType.NATURE]: [0, 255, 0],
+    [FaceType.CHARISMA]: [255, 127, 0],
+    [FaceType.MOVE]: [245, 75, 94],
   };
   let red = 0;
   let green = 0;

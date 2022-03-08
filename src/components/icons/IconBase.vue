@@ -11,7 +11,7 @@
     version="1.1"
     id="svg8"
   >
-    <g :fill="color">
+    <g :fill="color" :stroke="color">
       <component :is="iconName" />
     </g>
   </svg>

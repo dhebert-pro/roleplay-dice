@@ -50,6 +50,14 @@ import { FaceType } from '@/models/DiceModel';
           return 'icon-gears';
         case FaceType.STEAL:
           return 'icon-mask';
+        case FaceType.INTELLIGENCE:
+          return 'icon-brain';
+        case FaceType.PERCEPTION:
+          return 'icon-eye';
+        case FaceType.NATURE:
+          return 'icon-leaf';
+        case FaceType.CHARISMA:
+          return 'icon-mouth';
         default:
           return undefined;
       }
