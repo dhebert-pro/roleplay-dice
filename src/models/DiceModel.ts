@@ -15,6 +15,7 @@ export enum FaceType {
   NATURE,
   CHARISMA,
   BLANK,
+  UNKNOWN,
 }
 
 export interface DiceModel {
@@ -47,6 +48,7 @@ export const getColorFromDice = (dice: DiceModel): Array<number> => {
     [FaceType.NATURE]: [0, 255, 0],
     [FaceType.CHARISMA]: [255, 127, 0],
     [FaceType.MOVE]: [245, 75, 94],
+    [FaceType.UNKNOWN]: [255, 255, 255],
   };
   let red = 0;
   let green = 0;

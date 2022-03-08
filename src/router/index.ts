@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
-import Fight from '@/views/Fight.vue';
+import Events from '@/views/Events.vue';
 import Home from '@/views/Home.vue';
 import Roll from '@/views/Roll.vue';
 
@@ -17,9 +17,9 @@ const routes: Array<RouteRecordRaw> = [
     props: true,
   },
   {
-    path: '/fight',
-    name: 'Fight',
-    component: Fight,
+    path: '/events',
+    name: 'Events',
+    component: Events,
     props: true,
   },
 ];

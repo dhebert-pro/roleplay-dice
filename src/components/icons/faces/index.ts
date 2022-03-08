@@ -8,6 +8,7 @@ import IconLeaf from '@/components/icons/faces/IconLeaf.vue';
 import IconMask from '@/components/icons/faces/IconMask.vue';
 import IconMouth from '@/components/icons/faces/IconMouth.vue';
 import IconPotion from '@/components/icons/faces/IconPotion.vue';
+import IconQuestion from '@/components/icons/faces/IconQuestion.vue';
 import IconShield from '@/components/icons/faces/IconShield.vue';
 import IconSpear from '@/components/icons/faces/IconSpear.vue';
 import IconSword from '@/components/icons/faces/IconSword.vue';
@@ -30,4 +31,5 @@ export default {
   IconEye,
   IconLeaf,
   IconMouth,
+  IconQuestion,
 };

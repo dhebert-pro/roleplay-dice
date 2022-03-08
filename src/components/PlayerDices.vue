@@ -66,7 +66,6 @@ export default class PlayerDices extends Vue {}
   row-gap: 20px;
 }
 .dice {
-  flex: 1;
   display: flex;
   flex: 0 0 80px;
   height: 80px;

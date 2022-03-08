@@ -58,6 +58,8 @@ import { FaceType } from '@/models/DiceModel';
           return 'icon-leaf';
         case FaceType.CHARISMA:
           return 'icon-mouth';
+        case FaceType.UNKNOWN:
+          return 'icon-question';
         default:
           return undefined;
       }
